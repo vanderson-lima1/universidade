@@ -15,9 +15,9 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
+            $table->string('name', 100)->nullable();
             //$table->enum('period', ['MORNING', 'AFTERNOON', 'DAYTIME']);
-            $table->smallInteger('period');
+            $table->smallInteger('period')->nullable();
             
             $table->timestamps();   
         });

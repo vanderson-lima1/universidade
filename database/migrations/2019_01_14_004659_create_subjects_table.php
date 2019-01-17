@@ -15,7 +15,7 @@ class CreateSubjectsTable extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
+            $table->string('name', 100)->nullable();
 
             $table->integer('course_id')->unsigned()->nullable($value=false);
             $table->foreign('course_id')->references('id')->on('courses');

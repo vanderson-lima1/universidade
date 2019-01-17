@@ -19,9 +19,9 @@ class CreateServiceQueuesTable extends Migration
             $table->bigInteger('protocol_id')->unsigned();
             $table->foreign('protocol_id')->references('id')->on('protocols');
 
-            $table->dateTime('schedulingDate');
+            $table->dateTime('schedulingDate')->nullable();
             //$table->enum('schedulingStatus', ['AGENDADO', 'CANCELADO', 'ATENDIDO']);
-            $table->smallInteger('status'); 
+            $table->smallInteger('status')->nullable(); 
 
             $table->timestamps();
         });

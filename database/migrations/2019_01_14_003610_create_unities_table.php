@@ -15,7 +15,7 @@ class CreateUnitiesTable extends Migration
     {
         Schema::create('unities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
+            $table->string('name', 100)->nullable();
 
             $table->integer('institution_id')->unsigned()->nullable($value=false);
             $table->foreign('institution_id')->references('id')->on('institutions');

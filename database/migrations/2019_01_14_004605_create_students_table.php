@@ -15,11 +15,11 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
+            $table->string('name', 100)->nullable();
             // numero de aulas
-            $table->smallInteger('nrLessons')->unsigned()->nullable($value=false);
+            $table->smallInteger('nrLessons')->unsigned()->nullable();
             //$table->enum('period', ['MORNING', 'AFTERNOON', 'DAYTIME']);
-            $table->smallInteger('period');
+            $table->smallInteger('period')->nullable();
             
             $table->integer('unity_id')->unsigned()->nullable($value=false);
             $table->foreign('unity_id')->references('id')->on('unities');

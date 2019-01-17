@@ -29,10 +29,10 @@ class CreateQueuesTable extends Migration
             $table->foreign('protocol_id')->references('id')->on('protocols');
 
             //$table->enum('period', ['MORNING', 'AFTERNOON', 'DAYTIME']);
-            $table->smallInteger('period');
+            $table->smallInteger('period')->nullable();
 
             //$table->enum('status', ['ESPERA', 'ATENDIDO', 'ENCAMINHADO', 'ENCERRADO']);
-            $table->smallInteger('status');            
+            $table->smallInteger('status')->nullable();            
             
             $table->timestamps();
         });
