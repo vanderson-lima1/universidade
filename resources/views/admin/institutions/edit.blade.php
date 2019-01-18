@@ -4,22 +4,13 @@
     <h3> Alterar Universidade </h3>
     <br/></br/>
     
-    @if($errors->any())
-        <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    @endif        
+    @include('util._erros')
     
-    <form method="POST" action="{{route('institutions.update', ['id' => $institution->id])}}">
-        {{csrf_field()}}
+    <form method="POST" action="{{route('institutions.update', ['id' => $institution->id])}}">        
         {{method_field('PUT')}}
 
-        <div class="form-group">
-            <label for="name">Nome</label>
-        <input class="form-control" id="name" name="name" value="{{$institution->name}}">
-        </div>  
+        @include('admin.institutions._form')
+        
         <button type="submit" class="btn btn-primary">Alterar</button>
     </form>
 

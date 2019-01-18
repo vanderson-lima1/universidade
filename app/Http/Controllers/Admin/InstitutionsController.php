@@ -26,7 +26,7 @@ class InstitutionsController extends Controller
      */
     public function create()
     {
-        return view('admin.institutions.create');
+        return view('admin.institutions.create', ['institution' => new Institution()]);
     }
 
     /**
