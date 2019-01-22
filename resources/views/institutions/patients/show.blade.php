@@ -1,21 +1,15 @@
 @extends('layouts.layout')
 @section('content')
-    <h1> Universidade {{$patient->unity->institution->name}}  </h1>
-    <br/></br/>
-    <h3> Dados Paciente Unidade {{$patient->unity->name}} </h3>
-    <br/></br/> 
+    <h4> Universidade {{$patient->unity->institution->name}}  </h4>
+    <br/>
+    <h4> Dados Paciente Unidade {{$patient->unity->name}} </h4>
+    <br/> 
     
-    <a class="btn btn-primary" href="{{route('patients.edit', ['patient' => $patient->id ]) }}">Editar</a>
-
-    <a class="btn btn-danger" href="{{route('patients.destroy', ['patient' => $patient->id ]) }}"
-        onclick="event.preventDefault();if(confirm('Deseja excluir este item?')){document.getElementById('form-delete').submit();}"
-    >Excluir</a>
     <form id="form-delete" style="display: none" action="{{route('patients.destroy', ['patient' => $patient->id ]) }}" method="POST">
         {{csrf_field()}}
         {{method_field('DELETE')}}
     </form>
 
-    <br/></br/>
     <table class="table table-bordered">
         <tbody>
             <tr>
@@ -52,5 +46,14 @@
             </tr>
         </tbody>
     </table>
+
+    <a class="btn btn-primary" href="{{route('patients.edit', ['patient' => $patient->id ]) }}">Alterar</a>
+
+    <a class="btn btn-danger" href="{{route('patients.destroy', ['patient' => $patient->id ]) }}"
+    onclick="event.preventDefault();if(confirm('Deseja excluir este item?')){document.getElementById('form-delete').submit();}"
+>Excluir</a>
+
+    <br/><br/>
+
     <a class="btn btn-default" href="{{route('patients.index')}}">&lArr; voltar a lista</a>
 @endsection

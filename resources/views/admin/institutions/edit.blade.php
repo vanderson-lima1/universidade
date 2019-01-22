@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 @section('content')    
-    <br/></br/>
-    <h3> Alterar Universidade </h3>
-    <br/></br/>
-    
+
+    <h4> Alterar Universidade </h4>
+    <br/>
+
     @include('util._erros')
     
     <form method="POST" action="{{route('institutions.update', ['id' => $institution->id])}}">        

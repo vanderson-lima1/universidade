@@ -1,11 +1,12 @@
 @extends('layouts.layout')
 @section('content')
-    <h1> Universidade {{$unity->institution->name}}  </h1>
-    <br/></br/>
-    <h3> Lista de Pacientes Unidade {{$unity->name}} </h3>
-    <br/></br/>            
-    <a class="btn btn-primary" href="{{route('patients.create')}}">Criar novo</a>
-    <br/></br/>
+    <h4> Universidade {{$unity->institution->name}}  </h4>
+    <br/>
+    <h4> Lista de Pacientes Unidade {{$unity->name}} </h4>
+    <br/>            
+    <a class="btn btn-success" href="{{route('patients.create')}}">Cadastrar</a>
+    <br/><br/>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -32,8 +33,8 @@
                 <td>{{$patient->documentRG}}</td>
                 <td>{{$patient->documentSUS}}</td>
                 <td>
-                    <a href="{{route('patients.edit', ['patient' => $patient])}}">Editar</a>
-                    <a href="{{route('patients.show', ['patient' => $patient])}}">| Ver</a>
+                    <a href="{{route('patients.edit', ['patient' => $patient])}}">Alterar</a> |
+                    <a href="{{route('patients.show', ['patient' => $patient])}}">Ver</a>
                 </td>
             @endforeach
         </tbody>

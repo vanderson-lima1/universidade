@@ -1,9 +1,10 @@
 @extends('layouts.layout')
 @section('content')
-    <br/></br/>
-    <h3> Lista de Unidades</h3>
-    <br/></br/>            
-    <a class="btn btn-primary" href="{{route('unities.create')}}">Criar nova</a>
+
+    <h4> Lista de Unidades</h4>
+    <br/>
+
+    <a class="btn btn-success" href="{{route('unities.create')}}">Cadastrar</a>
     <br/></br/>
     <table class="table table-striped">
         <thead>
@@ -21,8 +22,8 @@
                 <td>{{$unity->name}}</td>
                 <td>{{$unity->institution->name}}</td>
                 <td>
-                    <a href="{{route('unities.edit', ['unity' => $unity])}}">Editar</a>
-                    <a href="{{route('unities.show', ['unity' => $unity])}}">| Ver</a>
+                    <a href="{{route('unities.edit', ['unity' => $unity])}}">Alterar</a> |
+                    <a href="{{route('unities.show', ['unity' => $unity])}}">Ver</a>
                 </td>
             @endforeach
         </tbody>

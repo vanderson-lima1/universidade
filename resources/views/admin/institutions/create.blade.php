@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 @section('content')    
-    <br/></br/>
-    <h3> Nova Universidade </h3>
-    <br/></br/>
+
+    <h4> Nova Universidade </h4>
+    <br/>
     
     @include('util._erros')
 
@@ -10,7 +10,7 @@
         
         @include('admin.institutions._form')
 
-        <button type="submit" class="btn btn-default">Cadastrar</button>
+        <button type="submit" class="btn btn-success ">Cadastrar</button>
     </form>
     <a class="btn btn-default" href="{{route('institutions.index')}}">&lArr; voltar a lista</a>
 @endsection

@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 @section('content')    
-    <h1> Universidade {{$unity->institution->name}}  </h1>
-    <br/></br/>
-    <h3> Alteração Cadastro Paciente Unidade {{$unity->name}} </h3>
-    <br/></br/> 
+    <h4> Universidade {{$unity->institution->name}}  </h4>
+    <br/>
+    <h4> Alterar Unidade - {{$unity->name}} </h4>
+    <br/>
     
     @include('util._erros')
     

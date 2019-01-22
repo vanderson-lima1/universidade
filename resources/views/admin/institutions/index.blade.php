@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 @section('content')
-    <br/></br/>
-    <h3> Lista de Universidades </h3>
-    <br/></br/>
-    <a class="btn btn-primary" href="{{route('institutions.create')}}">Criar nova</a>
-    <br/></br/>
+
+    <h4> Lista de Universidades </h4>
+    <br/>
+    <a class="btn btn-success" href="{{route('institutions.create')}}">Cadastrar</a>
+    <br/><br/>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -19,8 +19,8 @@
                 <td>{{$institution->id}}</td>
                 <td>{{$institution->name}}</td>
                 <td>
-                    <a href="{{route('institutions.edit', ['institution' => $institution])}}">Editar</a>
-                    <a href="{{route('institutions.show', ['institution' => $institution])}}">| Ver</a>
+                    <a href="{{route('institutions.edit', ['institution' => $institution])}}">Alterar</a> | 
+                    <a href="{{route('institutions.show', ['institution' => $institution])}}">Ver</a>
                 </td>
             @endforeach
         </tbody>
