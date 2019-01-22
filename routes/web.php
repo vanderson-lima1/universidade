@@ -22,3 +22,19 @@ Route::group([
 ], function () {
     Route::resource('institutions', 'InstitutionsController');
 });
+
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin'
+
+], function () {
+    Route::resource('unities', 'UnitiesController');
+});
+
+Route::group([
+    'prefix' => 'institution',
+    'namespace' => 'Institution'
+
+], function () {
+    Route::resource('patients', 'PatientsController');
+});
