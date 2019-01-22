@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Institution;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Patient;
 use App\Models\Unity;
-use App\Models\Institution;
+use App\Util\SessionInformation;
 
-class UnitiesController extends Controller
+class PatientsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,12 @@ class UnitiesController extends Controller
      */
     public function index()
     {
-        $unities = Unity::all();
-        return view('admin.unities.index', compact('unities'));
+        $patients = Patient::all();
+
+        //retirar!!!
+        $unity = SessionInformation::unityLoggedIn();   
+
+        return view('institutions.patients.index', compact('patients','unity'));
     }
 
     /**
@@ -27,8 +32,10 @@ class UnitiesController extends Controller
      */
     public function create()
     {
-        $institutions = Institution::all(); 
-        return view('admin.unities.create', ['unity' => new Unity(), 'institutions' => $institutions]);
+        //retirar!!!
+        $unity = SessionInformation::unityLoggedIn();   
+
+        return view('institutions.patients.create', ['patient' => new Patient(), 'unity' => $unity]);
     }
 
     /**
@@ -43,8 +50,12 @@ class UnitiesController extends Controller
         $data = $request->all();
         $data['default'] = $request->has('defaulter');
 
-        Unity::Create($data);        
-        return redirect()->route('unities.index');
+        //retirar!!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        $data['unity_id'] = $unity->id;
+        Patient::Create($data);        
+        return redirect()->route('patients.index');
     }
 
     /**
@@ -53,9 +64,9 @@ class UnitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Unity $unity)    
+    public function show(Patient $patient)    
     {
-        return view('admin.unities.show', compact('unity'));
+        return view('institutions.patients.show', compact('patient'));
     }
 
     /**
@@ -64,10 +75,9 @@ class UnitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Unity $unity)
+    public function edit(Patient $patient)
     {
-        $institutions = Institution::all(); 
-        return view('admin.unities.edit', compact('unity', 'institutions'));
+        return view('institutions.patients.edit', compact('patient'));
     }
 
     /**
@@ -77,17 +87,17 @@ class UnitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Unity $unity)
+    public function update(Request $request, Patient $patient)
     {
         $this->_validate($request);
 
         $data = $request->all();
         $data['default'] = $request->has('defaulter');
 
-        $unity->fill($data);
-        $unity->save();
+        $patient->fill($data);
+        $patient->save();
 
-        return redirect()->route('unities.index');
+        return redirect()->route('patients.index');
     }
 
     /**
@@ -96,17 +106,25 @@ class UnitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Unity $unity)
+    public function destroy(Patient $patient)
     {
-        $unity->delete();
-        return redirect()->route('unities.index');
+        $patient->delete();
+        return redirect()->route('patients.index');
     }
 
     protected function _validate(Request $request){
 
+        $period = implode(',', array_keys(Patient::PERIOD));
+        
         $this->validate($request, [
             'name' => 'required|max:100',
-            'institution_id' => 'required'
+            'sex' => 'required|in:m,f',
+            'period' =>  "required|in:$period" ,
+            'phone' => 'required',
+            'documentCPF' => 'required' ,
+            'documentRG'=> 'required',
+            'documentSUS' => 'required',
+
         ]);
     }
 }

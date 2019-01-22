@@ -4,8 +4,7 @@
     </head>
     <body>
         <div class="row">            
-            <div class="container">                
-                    <h1> Titulo Principal </h1>
+            <div class="container">                                    
                 @yield('content')
             </div> 
         </div>                       

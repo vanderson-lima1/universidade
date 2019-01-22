@@ -8,6 +8,8 @@ class Unity extends Model
 {
     protected $fillable = [
         'name',
+        'institution_id',
+        
     ];
 
     // ManyToOne ou OneToMany(Inverse) //
