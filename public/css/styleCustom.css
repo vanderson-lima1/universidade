@@ -1,6 +1,7 @@
 body {
     overflow-x: hidden;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12.5px;
 }
 
 /* Estilos CSS Customizados. */
@@ -23,6 +24,7 @@ body {
     position: fixed;
     left: 250px;
     width:0;
+    margin-top: 10px;
     margin-left: -250px;
     padding-left: 0px;
     overflow-y: auto;
@@ -41,6 +43,7 @@ body {
     width: 100%;
     position: absolute;
     padding: -250px;
+    padding: 10px 1px 1px 1px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -58,7 +61,7 @@ body {
     list-style: none;
     height: 750px;
     max-height: 750px;
-    font-size: 14px;
+    /*font-size: 14px;*/
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.2), 0 6px 20px 0 rgba(0, 0, 0, 1.19);
 }
 
@@ -86,7 +89,7 @@ body {
 
 .sidebar-nav > .sidebar-brand {
     height: 65px;
-    font-size: 15px;
+    /*font-size: 15px;*/
     line-height: 60px;
 }
 
@@ -97,6 +100,12 @@ body {
 .sidebar-nav > .sidebar-brand a:hover {
     color: #fff;
     background: none;
+}
+
+@media(max-width:768px) {
+    #sidebar-wrapper {
+        margin-top: 14px;
+    }
 }
 
 @media(min-width:768px) {
@@ -117,8 +126,8 @@ body {
     }
 
     #page-content-wrapper {
-        padding: 1px;
-        position: relative;
+        padding: 1px 1px 1px 1px;
+        position: relative;        
     }
     
     #wrapper.toggled #page-content-wrapper {
@@ -146,19 +155,35 @@ body {
 
 /* Nav Brand*/
 .navbar-brand-custom {
-    font-size: 14px !important;
+    /*font-size: 14px !important;*/
     padding-left: 1px;
 }
 
 /* Barra superior */
 .nav-link-custom {
-    font-size: 14px !important;
+    /*font-size: 14px !important;*/
 }
 
 /* Footer */
 .navbar-footer-custom {
     background-image: linear-gradient(to bottom right,rgb(35, 109, 179, 0.4), rgb(35, 109, 179, 0.9));
     height: 50px;
-    font-size: 12px !important;
+    /*font-size: 12px !important;*/
     color: #fff;
+}
+
+/* Estilização Material Icons */
+.material-icons.centralizado { 
+    padding: 0px 8px 0px 0px !important;
+    font-size: 18px;
+}
+
+.material-icons.centralizado .sm { 
+    font-size: 10px !important;
+}
+
+.material-icons.menu { 
+    padding: 0px 8px 0px 0px !important;
+    font-size: 40px;
+    color: #999;
 }
