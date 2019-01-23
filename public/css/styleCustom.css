@@ -59,6 +59,7 @@ body {
     height: 750px;
     max-height: 750px;
     font-size: 14px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.2), 0 6px 20px 0 rgba(0, 0, 0, 1.19);
 }
 
 .sidebar-nav li {
