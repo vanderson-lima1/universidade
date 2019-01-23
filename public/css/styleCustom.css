@@ -1,5 +1,6 @@
 body {
     overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Estilos CSS Customizados. */
@@ -9,7 +10,8 @@ body {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
-    -o-transition: all 05s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 #wrapper.toggled {
@@ -22,6 +24,7 @@ body {
     left: 250px;
     width:0;
     margin-left: -250px;
+    padding-left: 0px;
     overflow-y: auto;
     background: rgb(227, 239, 245);
     -webkit-transition: all 0.5s ease;
@@ -53,13 +56,13 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
-    height: 600px;
+    height: 750px;
     max-height: 750px;
     font-size: 14px;
 }
 
 .sidebar-nav li {
-    text-indent: 10px;
+    text-indent: 15px;
     line-height: 45px;
 }
 
@@ -121,29 +124,40 @@ body {
         position: relative;
         margin-right: 0;
     }
+
 }
 
 /* Topo Fixo*/
 .container-fluid-custom {
-    margin-bottom: 35px !important;
+    margin-bottom: 29px !important;
 }
 
 @media(max-width:768px) {
     .container-fluid-custom {
-        margin-bottom: 56px !important;
+        margin-bottom: 60px !important;
     }
 }
 
 .navbar-custom {
+    padding-bottom: 8px;
     background-image: linear-gradient(to bottom right,rgb(35, 109, 179, 0.4), rgb(35, 109, 179, 0.9));
 }
 
 /* Nav Brand*/
 .navbar-brand-custom {
     font-size: 14px !important;
+    padding-left: 1px;
 }
 
 /* Barra superior */
 .nav-link-custom {
     font-size: 14px !important;
+}
+
+/* Footer */
+.navbar-footer-custom {
+    background-image: linear-gradient(to bottom right,rgb(35, 109, 179, 0.4), rgb(35, 109, 179, 0.9));
+    height: 50px;
+    font-size: 12px !important;
+    color: #fff;
 }

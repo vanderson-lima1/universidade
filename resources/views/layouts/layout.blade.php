@@ -3,7 +3,7 @@
     <body>
 
             <div class="container-fluid container-fluid-custom">   
-                <nav class="navbar navbar-custom navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+                <nav class="navbar navbar-custom navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
                     <a class="navbar-brand navbar-brand-custom col-sm-3 col-md-2 mr-0" href="#">Nome da empresa</a>
                     <ul class="navbar-nav px-3">
                         <li class="nav-item text-nowrap">

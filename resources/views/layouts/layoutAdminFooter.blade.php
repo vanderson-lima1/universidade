@@ -5,14 +5,10 @@
 
 <br><br>
 
-<footer class="container-fluid">
-    <div align="center">
-        <p>&copy; Controle Acadêmico de Pacientes, 2019.
-            <a href="#">Privacidade</a> 
-            <a href="#">Termos de Uso</a> 
-            <a href="#">Contato</a>
-        </p>
+<div class="container-fluid container-fluid-custom">   
+    <nav class="navbar navbar-footer-custom navbar-dark fixed-bottom bg-dark flex-md-nowrap shadow">
+        <div class="">Controle Acadêmico de Pacientes - 2019</div>
+    </nav>
 </div>
-</footer>
 
 </html>
