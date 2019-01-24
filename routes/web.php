@@ -24,8 +24,8 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'admin',
-    'namespace' => 'Admin'
+    'prefix' => 'institution',
+    'namespace' => 'Institution'
 
 ], function () {
     Route::resource('unities', 'UnitiesController');

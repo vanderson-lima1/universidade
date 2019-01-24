@@ -7,7 +7,7 @@
 
     <form method="POST" action="{{route('unities.store')}}">
         
-        @include('admin.unities._form')
+        @include('institutions.unities._form')
 
         <button type="submit" class="btn btn-success">Cadastrar</button>
     </form>

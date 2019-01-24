@@ -29,9 +29,9 @@
  
     <a class="btn btn-primary" href="{{route('unities.edit', ['unity' => $unity->id ]) }}">Alterar</a>
 
-<a class="btn btn-danger" href="{{route('unities.destroy', ['unity' => $unity->id ]) }}"
-    onclick="event.preventDefault();if(confirm('Deseja excluir este item?')){document.getElementById('form-delete').submit();}"
->Excluir</a>
+    <a class="btn btn-danger" href="{{route('unities.destroy', ['unity' => $unity->id ]) }}"
+        onclick="event.preventDefault();if(confirm('Deseja excluir este item?')){document.getElementById('form-delete').submit();}"
+    >Excluir</a>
 
     <br/><br/>
     

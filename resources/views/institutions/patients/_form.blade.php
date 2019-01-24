@@ -20,23 +20,21 @@
       </div>
 
       @php
-         $period = $patient->period;    
+         $periods = $patient::PERIOD;
       @endphp
 
       <div class="form-group">
          <label for="period">Período</label>
-         <select class="form-control" name="period" id="period" value="{{$period}}">
-             <option value="">Selecione o período para consulta</option>
-             <option value="1" {{old('period',$period) == 1 ?'selected="selected"': ''}}>Diurno</option>
-             <option value="2" {{old('period',$period) == 2 ?'selected="selected"': ''}}>Vespertino</option>
-             <option value="3" {{old('period',$period) == 3 ?'selected="selected"': ''}}>Matutino</option>
-             <option value="3" {{old('period',$period) == 3 ?'selected="selected"': ''}}>Noturno</option>      
-             </option>
+         <select class="form-control" name="period" id="period" value="{{$patient->period}}">
+            <option value="">Selecione o período para consulta</option>
+            @foreach ($periods as $key => $value)
+               <option value="{{$key}}" {{old('period',$patient->period) == $key ?"selected='selected'" : ""}}>{{$value}}</option>    
+            @endforeach            
          </select>
       </div>      
 
       <div class="form-group">
-         <label for="phone">Telefone </label>
+         <label for="phone">Celular </label>
          <input class="form-control" id="phone" name="phone" 
                 value="{{old('phone',$patient->phone)}}">
       </div>

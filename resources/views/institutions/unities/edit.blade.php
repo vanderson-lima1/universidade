@@ -10,7 +10,7 @@
     <form method="POST" action="{{route('unities.update', ['id' => $unity->id])}}">        
         {{method_field('PUT')}}
 
-        @include('admin.unities._form')
+        @include('institutions.unities._form')
         
         <button type="submit" class="btn btn-primary">Alterar</button>
     </form>

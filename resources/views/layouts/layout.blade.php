@@ -6,15 +6,17 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="/css/app.css"> <!-- Inclui denovo a biblioteca padrao -->
     <link rel="stylesheet" href="/css/styleCustom.css"> 
+
 </head>
 
     <body>
 
             <div class="container-fluid container-fluid-custom">   
                 <nav class="navbar navbar-custom navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
-                    <a class="navbar-brand navbar-brand-custom col-sm-3 col-md-2 mr-0" href="http://localhost:8000/admin/institutions">Nome da empresa</a>
+                    <a class="navbar-brand navbar-brand-custom col-sm-3 col-md-2 mr-0" href="{{route('institutions.index')}}">Nome da empresa</a>
                     <ul class="navbar-nav px-3">
                         <li class="nav-item text-nowrap">
                         <a class="nav-link nav-link-custom" href="#">
@@ -30,17 +32,17 @@
             <div id="wrapper">
                 <div id="sidebar-wrapper">
                     <ul class="sidebar-nav">
-                        <li> <a href="http://localhost:8000/admin/institutions">
+                        <li> <a href="{{route('institutions.index')}}">
                                 <i class="material-icons centralizado">location_city</i>
                                 Instituições
                             </a>
                         </li>
-                        <li> <a href="http://localhost:8000/admin/unities">
+                        <li> <a href="{{route('unities.index')}}">
                                 <i class="material-icons centralizado">place</i>
                                 Unidades
                             </a>
                         </li>
-                        <li> <a href="http://localhost:8000/institution/patients">
+                        <li> <a href="{{route('patients.index')}}">
                                 <i class="material-icons centralizado">airline_seat_recline_extra</i>
                                 Pacientes
                             </a>
@@ -66,7 +68,7 @@
 
             </div>
 
-            @extends('layouts.layoutAdminFooter') 
+            @include('layouts.layoutAdminFooter') 
 
     </body>
 </html>

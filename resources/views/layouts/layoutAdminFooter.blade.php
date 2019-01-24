@@ -1,7 +1,9 @@
-    <script src="/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jsCustom.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script> <!-- Inclui denovo a biblioteca padrao -->
+<!--<script src="/js/jquery-3.3.1.slim.min.js"></script> -->
+<!--<script src="/js/popper.min.js"></script>    -->
+<!--<script src="/js/bootstrap.min.js"></script> -->
+    <script src="/js/jsCustom.js"></script>  
+
 
 <br><br>
 
@@ -10,5 +12,3 @@
         <div class="">Controle Acadêmico de Pacientes - 2019</div>
     </nav>
 </div>
-
-</html>

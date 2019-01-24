@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     const PERIOD = [
-        1 => 'Diurno',
-        2 => 'Vespertino',
-        3 => 'Matutino'
+        1 => 'Manhã',
+        2 => 'Tarde',
+        3 => 'Noite'
     ];
 
     protected $fillable = [

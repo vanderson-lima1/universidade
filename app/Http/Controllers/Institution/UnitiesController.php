@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Institution;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Unity;
 use App\Models\Institution;
+use App\Util\SessionInformation;
 
 class UnitiesController extends Controller
 {
@@ -17,7 +18,7 @@ class UnitiesController extends Controller
     public function index()
     {
         $unities = Unity::all();
-        return view('admin.unities.index', compact('unities'));
+        return view('institutions.unities.index', compact('unities'));
     }
 
     /**
@@ -27,8 +28,7 @@ class UnitiesController extends Controller
      */
     public function create()
     {
-        $institutions = Institution::all(); 
-        return view('admin.unities.create', ['unity' => new Unity(), 'institutions' => $institutions]);
+        return view('institutions.unities.create', ['unity' => new Unity()]);
     }
 
     /**
@@ -43,6 +43,10 @@ class UnitiesController extends Controller
         $data = $request->all();
         $data['default'] = $request->has('defaulter');
 
+        //retirar!!!
+        $institution = SessionInformation::institutionLoggedIn();
+
+        $data['institution_id'] = $institution->id;
         Unity::Create($data);        
         return redirect()->route('unities.index');
     }
@@ -55,7 +59,7 @@ class UnitiesController extends Controller
      */
     public function show(Unity $unity)    
     {
-        return view('admin.unities.show', compact('unity'));
+        return view('institutions.unities.show', compact('unity'));
     }
 
     /**
@@ -66,8 +70,7 @@ class UnitiesController extends Controller
      */
     public function edit(Unity $unity)
     {
-        $institutions = Institution::all(); 
-        return view('admin.unities.edit', compact('unity', 'institutions'));
+        return view('institutions.unities.edit', compact('unity'));
     }
 
     /**
@@ -105,8 +108,7 @@ class UnitiesController extends Controller
     protected function _validate(Request $request){
 
         $this->validate($request, [
-            'name' => 'required|max:100',
-            'institution_id' => 'required'
+            'name' => 'required|max:100',            
         ]);
     }
 }

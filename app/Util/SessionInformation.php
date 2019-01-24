@@ -11,12 +11,18 @@ class SessionInformation
 
     static function unityLoggedIn() {
         $unity = Unity::first();
+        if(!$unity){
+            $unity->name = "NAO ENCONTRADO";
+        }
         //$unity->id = 1;
         return $unity;
     }
 
     static function institutionLoggedIn() {
         $institution = Institution::first();
+        if(!$institution){
+            $$institution->name = "NAO ENCONTRADO";
+        }
         //$institution->id = 1;
         return $institution;
     }
