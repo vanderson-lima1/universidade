@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Institution;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Models\Unity;
+use App\Util\SessionInformation;
 
 class CoursesController extends Controller
 {
@@ -14,7 +17,12 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        return view('institutions.courses.index', compact('courses', 'unity'));
     }
 
     /**
@@ -23,8 +31,11 @@ class CoursesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {        
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        return view('institutions.courses.create', ['course' => new Course(), 'unity' => $unity]);
     }
 
     /**
@@ -35,7 +46,16 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        $data['unity_id'] = $unity->id;        
+        Course::Create($data);
+        return redirect()->route('courses.index');
     }
 
     /**
@@ -44,9 +64,9 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Course $course)
     {
-        //
+        return view('institutions.courses.show', compact('course'));
     }
 
     /**
@@ -55,9 +75,9 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Course $course)
     {
-        //
+        return view('institutions.courses.edit', compact('course'));
     }
 
     /**
@@ -67,9 +87,16 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Course $course)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        $course->fill($data);
+        $course->save();
+
+        return redirect()->route('courses.index');
     }
 
     /**
@@ -78,8 +105,15 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return redirect()->route('courses.index');
+    }
+
+    protected function _validate($request) {
+        $this->validate($request, [
+            'name' => 'required|max:100',
+        ]);
     }
 }

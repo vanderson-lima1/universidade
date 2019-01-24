@@ -38,3 +38,11 @@ Route::group([
 ], function () {
     Route::resource('patients', 'PatientsController');
 });
+
+Route::group([
+    'prefix' => 'institution',
+    'namespace' => 'Institution'
+
+], function () {
+    Route::resource('courses', 'CoursesController');
+});

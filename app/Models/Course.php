@@ -8,7 +8,7 @@ class Course extends Model
 {
     protected $fillable = [
         'name',
-        
+        'unity_id',
     ];
 
     public function unity() {

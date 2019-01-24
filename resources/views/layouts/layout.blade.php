@@ -16,7 +16,7 @@
 
             <div class="container-fluid container-fluid-custom">   
                 <nav class="navbar navbar-custom navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
-                    <a class="navbar-brand navbar-brand-custom col-sm-3 col-md-2 mr-0" href="{{route('institutions.index')}}">Nome da empresa</a>
+                    <a class="navbar-brand navbar-brand-custom col-sm-3 col-md-2 mr-0" href="{{route('institutions.index')}}">{{App\Util\SessionInformation::institutionLoggedIn()->name}}</a>
                     <ul class="navbar-nav px-3">
                         <li class="nav-item text-nowrap">
                         <a class="nav-link nav-link-custom" href="#">
@@ -47,6 +47,16 @@
                                 Pacientes
                             </a>
                         </li>    
+                        <li> <a href="{{route('courses.index')}}">
+                               <i class="material-icons centralizado">book</i>
+                               Cursos
+                            </a>
+                        </li>    
+                        <li> <a href="http://localhost:8000/emConstrucaoAnimal">
+                             <i class="material-icons centralizado">library_books</i>
+                             Materia
+                           </a>
+                     </li>                            
                     </ul>
                 </div>
 
