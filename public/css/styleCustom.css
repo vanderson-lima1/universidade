@@ -1,12 +1,16 @@
+/* ======================================================================= */
+/* Estilos CSS Customizados. */
+/* ======================================================================= */
+
 body {
     overflow-x: hidden;
     font-family: 'Open Sans', sans-serif;
     font-size: 12.5px;
 }
 
-/* Estilos CSS Customizados. */
-
-/*Toggle Styles*/
+/* ======================================================================= */
+/* Toggle Styles*/
+/* ======================================================================= */
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -51,7 +55,9 @@ body {
     margin-right: -250px;
 }
 
+/* ======================================================================= */
 /* Sidebar Styles */
+/* ======================================================================= */
 .sidebar-nav {
     position: relative;
     top:0;
@@ -134,10 +140,11 @@ body {
         position: relative;
         margin-right: 0;
     }
-
 }
 
+/* ======================================================================= */
 /* Topo Fixo*/
+/* ======================================================================= */
 .container-fluid-custom {
     margin-bottom: 29px !important;
 }
@@ -153,18 +160,14 @@ body {
     background-image: linear-gradient(to bottom right,rgb(35, 109, 179, 0.4), rgb(35, 109, 179, 0.9));
 }
 
-/* Nav Brand*/
 .navbar-brand-custom {
     /*font-size: 14px !important;*/
     padding-left: 1px;
 }
 
-/* Barra superior */
-.nav-link-custom {
-    /*font-size: 14px !important;*/
-}
-
+/* ======================================================================= */
 /* Footer */
+/* ======================================================================= */
 .navbar-footer-custom {
     background-image: linear-gradient(to bottom right,rgb(35, 109, 179, 0.4), rgb(35, 109, 179, 0.9));
     height: 50px;
@@ -172,7 +175,9 @@ body {
     color: #fff;
 }
 
+/* ======================================================================= */
 /* Estilização Material Icons */
+/* ======================================================================= */
 .material-icons.centralizado { 
     padding: 0px 8px 0px 0px !important;
     font-size: 18px;
@@ -182,8 +187,53 @@ body {
     font-size: 10px !important;
 }
 
+/* ======================================================================= */
+/* Estilização de Barra Superior Interna (Recolhe Menu/Barra de busca/) */
+/* ======================================================================= */
 .material-icons.menu { 
-    padding: 0px 8px 0px 0px !important;
-    font-size: 40px;
-    color: #999;
+    padding: 0px 0px 0px 0px !important;
+    font-size: 30px;
+    color: rgb(235, 141, 33);
+}
+
+.row-menu-custom {
+    margin-top: 0px !important;
+}
+
+/* ======================================================================= */
+/* Estilização de Jumbotron */
+/* ======================================================================= */
+.jumbotron-fluid-custom {
+    padding: 0px !important;
+    border-radius: 4px !important;
+}
+
+.jumbotron-title-page-custom {
+    padding: 10px !important;
+    margin: 0px 0px 10px 0px !important;
+}
+
+/* ======================================================================= */
+/* Estilização de Button */
+/* ======================================================================= */
+.btn-1-custom {
+    width: 100% !important;
+}
+
+@media(min-width:768px) {
+    .btn-2-custom {
+        width: 15% !important;
+    }
+}
+
+@media(max-width:768px) {
+    .btn-2-custom {
+        width: 100% !important;
+    }
+}
+
+.active-custom {
+    text-decoration: none;
+    color: #fff !important;
+    background: rgb(35, 109, 179, 0.6);
 }

@@ -62,10 +62,27 @@
 
                 <div id="page-content-wrapper">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <a href="#menu-toggle" id="menu-toggle"><i class="material-icons menu">swap_horiz</i></a>
-                                <hr>
+                        <div class="row row-menu-custom">
+                            <div class="col-lg-12 ">
+
+                                <br>
+                                <form class="form-inline">
+                                    <a href="#menu-toggle" id="menu-toggle">
+                                        <i class="material-icons menu">swap_horiz</i>
+                                    </a>
+                                    <input type="text" name="termo" class="form-control form-control-sm mx-sm-3 mb-2" placeholder="o quê procura?">
+                                    <select class="form-control form-control-sm mx-sm-3 mb-2" name="perfil">
+                                            <option value="0" selected> -- escolha --</option>
+                                            <option value="1">Aluno</option>
+                                            <option value="2">Paciente</option>
+                                            <option value="3">Professor</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary btn-2-custom form-control-sm mx-sm-3 mb-2 p-0 my-0">Pesquisar</button>
+                                </form>
+
+                                <br>
+                            </div>
+                            <div class="col-lg-12 ">
 
                                 <!-- Conteúdo -->
                                 @yield('content')

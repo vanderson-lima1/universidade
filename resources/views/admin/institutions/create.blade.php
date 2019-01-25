@@ -1,8 +1,11 @@
 @extends('layouts.layout')
 @section('content')    
 
-    <h4> Nova Universidade </h4>
-    <br/>
+<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
+  <div class="container">
+    <h6> Nova Instituição  </h6>
+  </div>
+</div>
     
     @include('util._erros')
 

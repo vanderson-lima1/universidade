@@ -1,11 +1,21 @@
 @extends('layouts.layout')
 @section('content')
 
-    <h4> Lista de Unidades</h4>
-    <br/>
+<div class="row">
+    <div class="col-lg-10 col-md-6">
+        <div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
+            <div class="container">
+                <h6> Unidades </h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-6">
+    <a class="btn btn-success btn-1-custom p-1 my-1" href="{{route('unities.create')}}">
+            <i class="material-icons centralizado">person_add</i>Cadastrar
+        </a>
+    </div>
+</div>
 
-    <a class="btn btn-success" href="{{route('unities.create')}}">Cadastrar</a>
-    <br/></br/>
     <table class="table table-striped">
         <thead>
             <tr>

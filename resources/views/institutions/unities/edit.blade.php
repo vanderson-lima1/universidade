@@ -1,7 +1,12 @@
 @extends('layouts.layout')
-@section('content')    
-    <h4> Universidade {{$unity->institution->name}}  </h4>
-    <br/>
+@section('content')   
+
+<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
+  <div class="container">
+    <h6> Universidade {{$unity->institution->name}} </h6>
+  </div>
+</div>
+
     <h4> Alterar Unidade - {{$unity->name}} </h4>
     <br/>
     

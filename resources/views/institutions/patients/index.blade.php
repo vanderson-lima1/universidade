@@ -1,12 +1,24 @@
 @extends('layouts.layout')
 @section('content')
-    <h4> Universidade {{$unity->institution->name}}  </h4>
-    <br/>
-    <h4> Lista de Pacientes Unidade {{$unity->name}} </h4>
-    <br/>            
-    <a class="btn btn-success" href="{{route('patients.create')}}">Cadastrar</a>
-    <br/><br/>
 
+<div class="row">
+    <div class="col-lg-10 col-md-6">
+        <div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
+            <div class="container">
+                <h6> Pacientes </h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-6">
+        <a class="btn btn-success btn-1-custom p-1 my-1" href="{{route('patients.create')}}">
+            <i class="material-icons centralizado">person_add</i>Cadastrar
+        </a>
+    </div>
+</div>
+
+    <h6>Instituição: {{$unity->institution->name}} / Unidade: {{$unity->name}} </h6>
+    <br/>            
+    
     <table class="table table-striped">
         <thead>
             <tr>

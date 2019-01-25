@@ -1,7 +1,11 @@
 @extends('layouts.layout')
 @section('content')
 
-    <h4> Detalhe Universidade </h4>
+<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
+  <div class="container">
+    <h6> Detalhe da Instituição </h6>
+  </div>
+</div>
     
     <form id="form-delete" style="display: none" action="{{route('institutions.destroy', ['institution' => $institution->id ]) }}" method="POST">
         {{csrf_field()}}

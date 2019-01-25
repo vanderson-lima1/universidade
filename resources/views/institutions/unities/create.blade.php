@@ -1,8 +1,12 @@
 @extends('layouts.layout')
 @section('content')   
-    <h4> Nova Unidade </h4>
-    <br/>
-    
+
+<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
+  <div class="container">
+    <h6> Nova Unidade </h6>
+  </div>
+</div>
+
     @include('util._erros')
 
     <form method="POST" action="{{route('unities.store')}}">

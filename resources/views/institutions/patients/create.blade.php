@@ -1,8 +1,13 @@
 @extends('layouts.layout')
-@section('content')   
-    <h4> Universidade {{$unity->institution->name}}  </h4>
-    <br/>
-    <h4> Novo Paciente Unidade {{$unity->name}} </h4>
+@section('content') 
+
+<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
+  <div class="container">
+    <h6> Universidade {{$unity->institution->name}} </h6>
+  </div>
+</div>
+
+    <h6> Novo Paciente - Unidade: {{$unity->name}} </h6>
     <br/>
     
     @include('util._erros')
