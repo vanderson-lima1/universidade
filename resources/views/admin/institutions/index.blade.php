@@ -1,20 +1,18 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="row">
-    <div class="col-lg-10 col-md-6">
-        <div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
-            <div class="container">
-                <h6> Instituições </h6>
+    <div class="row">
+        <div class="col s9">
+            <div class="breadcrumb-custom">
+                Instituições  
             </div>
         </div>
+        <div class="col s3 right-align">
+            <a class="waves-effect waves-light btn btn-create-custom" href="{{route('institutions.create')}}">
+                <i class="material-icons sm left">person_add</i>Cadastrar
+            </a>
+        </div>
     </div>
-    <div class="col-lg-2 col-md-6">
-        <a class="btn btn-success btn-1-custom p-1 my-1" href="{{route('institutions.create')}}">
-            <i class="material-icons centralizado">person_add</i>Cadastrar
-        </a>
-    </div>
-</div>
 
     <table class="table table-striped">
         <thead>
@@ -30,8 +28,12 @@
                 <td>{{$institution->id}}</td>
                 <td>{{$institution->name}}</td>
                 <td>
-                    <a href="{{route('institutions.edit', ['institution' => $institution])}}">Alterar</a> | 
-                    <a href="{{route('institutions.show', ['institution' => $institution])}}">Ver</a>
+                    <a class="tooltipped" data-position="top" data-tooltip="Alterar" href="{{route('institutions.edit', ['institution' => $institution])}}">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('institutions.show', ['institution' => $institution])}}">
+                        <i class="material-icons">search</i>
+                    </a>
                 </td>
             @endforeach            
         </tbody>        

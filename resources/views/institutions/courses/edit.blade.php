@@ -3,22 +3,22 @@
 
 <div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
   <div class="container">
-    <h6> Universidade {{$subject->course->unity->institution->name}}  </h6>
+    <h6> Universidade {{$course->unity->institution->name}}  </h6>
   </div>
 </div>
 
-    <h4> Alteração de Curso Unidade {{$subject->course->unity->name}} </h4>
+    <h4> Alteração de Curso Unidade {{$course->unity->name}} </h4>
     
     @include('util._erros')
     
-    <form method="POST" action="{{route('subjects.update', ['id' => $subject->id])}}">        
+    <form method="POST" action="{{route('courses.update', ['id' => $course->id])}}">        
         {{method_field('PUT')}}
 
-        @include('institutions.subjects._form')
+        @include('institutions.courses._form')
         
         <button type="submit" class="btn btn-primary">Alterar</button>
     </form>
 
-    <a class="btn btn-default" href="{{route('subjects.index')}}">&lArr; voltar a lista</a>
+    <a class="btn btn-default" href="{{route('courses.index')}}">&lArr; voltar a lista</a>
 
 @endsection
