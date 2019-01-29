@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Institution;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Subject;
+use App\Models\Course;
+use App\Models\Unity;
+use App\Util\SessionInformation;
 
 class SubjectsController extends Controller
 {
@@ -14,7 +18,15 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        //
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        $subjects = Subject::join('courses', 'courses.id', '=','course_id')
+                            ->where('courses.unity_id', '=', $unity->id)
+                            ->select('subjects.id', 'subjects.name', 'subjects.course_id')
+                            ->get();
+
+        return view('institutions.subjects.index', compact('subjects', 'unity'));
     }
 
     /**
@@ -23,8 +35,14 @@ class SubjectsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {        
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        $courses = Course::all()->where('unity_id', '=', $unity->id);
+
+        return view('institutions.subjects.create', ['subject' => new Subject(), 'unity' => $unity,
+                                                     'courses' => $courses]);
     }
 
     /**
@@ -35,7 +53,12 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+      
+        Subject::Create($data);
+        return redirect()->route('subjects.index');
     }
 
     /**
@@ -44,9 +67,9 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject)
     {
-        //
+        return view('institutions.subjects.show', compact('subject'));
     }
 
     /**
@@ -55,9 +78,14 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subject $subject)
     {
-        //
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        $courses = Course::all()->where('unity_id', '=', $unity->id);
+
+        return view('institutions.subjects.edit', compact('subject', 'courses'));
     }
 
     /**
@@ -67,9 +95,16 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subject $subject)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        $subject->fill($data);
+        $subject->save();
+
+        return redirect()->route('subjects.index');
     }
 
     /**
@@ -78,8 +113,16 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subject $subject)
     {
-        //
+        $subject->delete();
+        return redirect()->route('subjects.index');
+    }
+
+    protected function _validate($request) {
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'course_id' => 'required',
+        ]);
     }
 }

@@ -52,9 +52,9 @@
                                Cursos
                             </a>
                         </li>    
-                        <li> <a href="http://localhost:8000/emConstrucaoAnimal">
+                        <li> <a href="{{route('subjects.index')}}">
                              <i class="material-icons centralizado">library_books</i>
-                             Materia
+                             Disciplina
                            </a>
                      </li>                            
                     </ul>

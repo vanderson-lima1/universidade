@@ -33,7 +33,7 @@
                     <a href="{{route('institutions.edit', ['institution' => $institution])}}">Alterar</a> | 
                     <a href="{{route('institutions.show', ['institution' => $institution])}}">Ver</a>
                 </td>
-            @endforeach
-        </tbody>
-    </table>
+            @endforeach            
+        </tbody>        
+    </table>    
 @endsection
