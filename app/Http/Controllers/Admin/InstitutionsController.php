@@ -99,7 +99,6 @@ class InstitutionsController extends Controller
     }
 
     protected function _validate(Request $request){
-
         $this->validate($request, [
             'name' => 'required|max:100'
         ]);

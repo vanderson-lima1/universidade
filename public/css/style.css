@@ -1,0 +1,138 @@
+/* ======================================================================= */
+/* Estilos CSS Customizados. */ 
+/* ======================================================================= */
+/* Materialize */
+/* ======================================================================= */
+body {
+    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12.5px;
+}
+/* ======================================================================= */
+/* === Header ============================================================ */
+/* ======================================================================= */
+.header {
+    width: 100%;
+    height: 60px;
+}
+/* ======================================================================= */
+/* === Menu Lateral + Topo fixo ========================================== */
+/* ======================================================================= */
+.brand-logo {
+    padding-left: 15px !important;
+}
+.menu-custom {
+    /*background: rgb(227, 239, 245);*/
+    background: #fff;
+    width: 230px;
+}
+.menu-custom li a {
+    text-indent: 5px; 
+    line-height: 45px;
+    padding-left: 0px;
+    display: block;
+    text-decoration: none;
+    color: rgb(35, 109, 179);
+}
+.menu-custom li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgb(31, 82, 129);
+}
+.menu-custom-scroll {
+    position: fixed;
+    top: 67px;
+    padding-top: 1px;
+    margin-top: 1px;
+}
+.menu-custom-background {
+    /*background: rgb(227, 239, 245);*/
+    background: #fff;
+    height: 550px;
+    width: 230px; 
+    padding-top: 1px;
+    margin-top: 10px;
+}
+.sticky-nav {
+    position: fixed;
+    top: 0;
+}
+/* ======================================================================= */
+/* === Conteúdo Custom =================================================== */
+/* ======================================================================= */
+.main-custom {
+    margin: 0 auto;
+} 
+.breadcrumb-custom {
+    margin-top: 5px;
+    padding: 10px 0px 10px 10px;;
+    /*background-color: #e3f2fd;*/
+    color: black;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+
+/* ======================================================================= */
+/* === Box para busca ==================================================== */
+/* ======================================================================= */
+.box-busca {
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
+    height: 50px;
+    background-color: blanchedalmond;
+}
+
+/* ======================================================================= */
+/* === Navbar Custom ===================================================== */
+/* ======================================================================= */
+.nav-wrapper-custom {
+    padding-bottom: 1px;
+    background-image: linear-gradient(to bottom right,rgb(35, 109, 179, 1), rgb(95, 132, 233));
+    height: 150px;
+    z-index: 5;
+}
+/* ======================================================================= */
+/* Footer */
+/* ======================================================================= */
+.footer-custom {
+    background-image: linear-gradient(to bottom right,rgb(35, 109, 179, 1), rgb(95, 132, 233));
+    height: auto;
+}
+.page-footer {
+    padding-top: 10px !important; 
+}
+/* ======================================================================= */
+/* Estilização Material Icons */
+/* ======================================================================= */
+.material-icons.centralizado { 
+    padding: 0px 8px 0px 0px !important;
+    font-size: 18px;
+}
+.material-icons.sm { 
+    font-size: 17px !important;
+}
+
+/* ======================================================================= */
+/* Estilização de Barra Superior Interna (Recolhe Menu/Barra de busca/) */
+/* ======================================================================= */
+
+/* ======================================================================= */
+/* Estilização de Jumbotron */
+/* ======================================================================= */
+
+/* ======================================================================= */
+/* Estilização de Button */
+/* ======================================================================= */
+.btn-create-custom {
+    width: 140px;
+    margin-top: 4px !important;
+    font-size: 11px !important;
+    height: 33px !important;
+    background-color: #00c853;
+}
+
+.btn-create-custom:hover {
+    background-color: #2e7d32 !important;
+} 
