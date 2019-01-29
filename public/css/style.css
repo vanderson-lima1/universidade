@@ -39,6 +39,11 @@ body {
     color: #fff;
     background: rgb(31, 82, 129);
 }
+.menu-custom-active {
+    text-decoration: none;
+    color: #fff !important;
+    background: rgb(31, 82, 129);
+}
 .menu-custom-scroll {
     position: fixed;
     top: 67px;

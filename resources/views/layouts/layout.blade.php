@@ -12,13 +12,11 @@
 
     <body>
 
-              
         <div class="container">            
             <div class="header">
                 Teste
             </div>
         </div>
-    
 
     <nav>
         <div class="nav-wrapper nav-wrapper-custom">
@@ -46,7 +44,7 @@
                                             Início
                                         </a>
                                     </li>
-                                    <li> <a href="{{route('institutions.index')}}">
+                                    <li> <a id="link-active-2" href="{{route('institutions.index')}}">
                                             <i class="material-icons centralizado">location_city</i>
                                             Instituições
                                         </a>
@@ -79,31 +77,7 @@
                             <div class="main-custom">
                                 <!-- Conteúdo -->
                                 @yield('content')
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
-                                <br> </br>
+                                <br><br><br>
                                 <!-- Conteúdo -->
                             </div>
                         </div>

@@ -17,10 +17,11 @@ $(document).ready(function() {
 
 $(document).ready(function(){
     $('.tabs').tabs();
-  });
+});
 
-  $(document).ready(function(){
+$(document).ready(function(){
     $('.tooltipped').tooltip();
+<<<<<<< HEAD
   });
 
 var tabela = document.querySelector("#menu-index");
@@ -32,4 +33,12 @@ tabela.addEventListener("click", function(event) {
     console.log(aclicado);
     //event.submit();
     aclicado.classList.add("menu-custom-active");        
+=======
+});
+
+$(document).ready(function(){
+    if($('#link-active-1')) {
+        $('#link-active-1').addClass('menu-custom-active');
+    }    
+>>>>>>> ceb7deb7c45d26bd1d8042b386dd81aaafe027ab
 });
