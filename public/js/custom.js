@@ -17,8 +17,14 @@ $(document).ready(function() {
 
 $(document).ready(function(){
     $('.tabs').tabs();
-  });
+});
 
-  $(document).ready(function(){
+$(document).ready(function(){
     $('.tooltipped').tooltip();
-  });
+});
+
+$(document).ready(function(){
+    if($('#link-active-1')) {
+        $('#link-active-1').addClass('menu-custom-active');
+    }    
+});

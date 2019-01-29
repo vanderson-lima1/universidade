@@ -12,13 +12,11 @@
 
     <body>
 
-        <!--         
         <div class="container">            
             <div class="header">
                 Teste
             </div>
         </div>
-    -->
 
     <nav>
         <div class="nav-wrapper nav-wrapper-custom">
@@ -41,12 +39,12 @@
                             <div class="menu-custom-background z-depth-3">
                             <div class="menu-custom">
                                 <ul>
-                                    <li> <a href="{{route('institutions.index')}}">
+                                    <li> <a id="link-active-1" href="{{route('institutions.index')}}">
                                             <i class="material-icons centralizado">person</i>
                                             Início
                                         </a>
                                     </li>
-                                    <li> <a href="{{route('institutions.index')}}">
+                                    <li> <a id="link-active-2" href="{{route('institutions.index')}}">
                                             <i class="material-icons centralizado">location_city</i>
                                             Instituições
                                         </a>
@@ -79,6 +77,7 @@
                             <div class="main-custom">
                                 <!-- Conteúdo -->
                                 @yield('content')
+                                <br><br><br>
                                 <!-- Conteúdo -->
                             </div>
                         </div>
