@@ -36,42 +36,9 @@
             
                 <div class="row">
                         <div class="col s3">
-                            <div class="menu-custom-background z-depth-3">
-                            <div class="menu-custom">
-                                <ul>
-                                    <li> <a id="link-active-1" href="{{route('institutions.index')}}">
-                                            <i class="material-icons centralizado">person</i>
-                                            Início
-                                        </a>
-                                    </li>
-                                    <li> <a id="link-active-2" href="{{route('institutions.index')}}">
-                                            <i class="material-icons centralizado">location_city</i>
-                                            Instituições
-                                        </a>
-                                    </li>
-                                    <li> <a href="{{route('unities.index')}}">
-                                            <i class="material-icons centralizado">place</i>
-                                            Unidades
-                                        </a>
-                                    </li>
-                                    <li> <a href="{{route('patients.index')}}">
-                                            <i class="material-icons centralizado">airline_seat_recline_extra</i>
-                                            Pacientes
-                                        </a>
-                                    </li>    
-                                    <li> <a href="{{route('courses.index')}}">
-                                            <i class="material-icons centralizado">book</i>
-                                            Cursos
-                                        </a>
-                                    </li>    
-                                    <li> <a href="http://localhost:8000/emConstrucaoAnimal">
-                                            <i class="material-icons centralizado">library_books</i>
-                                            Matéria
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            </div>
+                            <!-- Menu -->
+                            @include('layouts.layoutMenu')
+                            <!-- Menu -->
                         </div>
                         <div class="col s9 ">
                             <div class="main-custom">
