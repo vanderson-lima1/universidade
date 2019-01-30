@@ -35,7 +35,7 @@
                         <i class="material-icons">search</i>
                     </a>
                 </td>
-            @endforeach
-        </tbody>
-    </table>
+            @endforeach            
+        </tbody>        
+    </table>    
 @endsection

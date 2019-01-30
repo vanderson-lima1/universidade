@@ -40,6 +40,7 @@
                             @include('layouts.layoutMenu')
                             <!-- Menu -->
                         </div>
+                        
                         <div class="col s9 ">
                             <div class="main-custom">
                                 <!-- Conteúdo -->

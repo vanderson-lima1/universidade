@@ -3,7 +3,7 @@
 
 <div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
   <div class="container">
-    <h6> Universidade {{$patient->unity->institution->name}}  </h6>
+    <h6> Universidade {{$course->unity->institution->name}}  </h6>
   </div>
 </div>
 
