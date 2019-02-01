@@ -52,6 +52,18 @@
                     Matéria
                 </a>
             </li>
+            <li class="{{ $url_server == 'teachers' ? 'menu-custom-active' : '' }}"> 
+                <a class="{{ $url_server == 'teachers' ? 'a-link-active' : '' }}" href="{{route('teachers.index')}}">
+                    <i class="material-icons centralizado">library_books</i>
+                    Professor
+                </a>
+            </li>
+            <li class="{{ $url_server == 'students' ? 'menu-custom-active' : '' }}"> 
+                <a class="{{ $url_server == 'students' ? 'a-link-active' : '' }}" href="{{route('students.index')}}">
+                    <i class="material-icons centralizado">library_books</i>
+                    Aluno
+                </a>
+            </li>
         </ul>
     </div>
 </div>

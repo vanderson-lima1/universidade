@@ -4,17 +4,16 @@
 /* Materialize */
 /* ======================================================================= */
 body {
-    overflow-x: hidden;
     font-family: 'Open Sans', sans-serif;
     font-size: 12.5px;
 }
-
 /* ======================================================================= */
 /* === Header ============================================================ */
 /* ======================================================================= */
-.header {
-    width: 100%;
-    height: 60px;
+.header-left {
+    width: 30%;
+    height: 50px;
+    margin: 0 auto;
 }
 /* ======================================================================= */
 /* === Menu Lateral + Topo fixo ========================================== */
@@ -37,16 +36,18 @@ body {
 .menu-custom li a:hover {
     text-decoration: none;
     color: #fff;
-    background: #039be5;
-    -webkit-transition: .7s ease-in-out;
-    -moz-transition: .7s ease-in-out;
-    -o-transition: .7s ease-in-out;
-    transition: .7s ease-in-out; 
+    /*background: #039be5;*/
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out; 
+    background-image: linear-gradient(to bottom right,rgb(35, 109, 179, 1), rgb(95, 132, 233));
 }
 .menu-custom-active {
     text-decoration: none;
-    background: #039be5;
+    /*background: #039be5;*/
     color: #fff !important;
+    background-image: linear-gradient(to bottom right,rgb(35, 109, 179, 1), rgb(95, 132, 233));
 }
 .a-link-active {
     color: #fff !important;
@@ -77,14 +78,13 @@ body {
 } 
 .breadcrumb-custom {
     margin-top: 5px;
-    padding: 10px 0px 10px 10px;;
+    padding: 10px 0px 10px 10px;
     /*background-color: #e3f2fd;*/
     color: black;
     text-transform: uppercase;
     font-size: 10px;
     letter-spacing: 2px;
 }
-
 /* ======================================================================= */
 /* === Box para busca ==================================================== */
 /* ======================================================================= */
@@ -94,7 +94,6 @@ body {
     height: 50px;
     background-color: blanchedalmond;
 }
-
 /* ======================================================================= */
 /* === Navbar Custom ===================================================== */
 /* ======================================================================= */
@@ -124,7 +123,6 @@ body {
 .material-icons.sm { 
     font-size: 17px !important;
 }
-
 /* ======================================================================= */
 /* Estilização de Barra Superior Interna (Recolhe Menu/Barra de busca/) */
 /* ======================================================================= */
@@ -143,8 +141,17 @@ body {
     height: 33px !important;
     background-color: #00c853;
 }
-
 .btn-create-custom:hover {
     background-color: #2e7d32 !important;
 } 
-
+/* ======================================================================= */
+/* === Foto de Perfil ==================================================== */
+/* ======================================================================= */
+.circle-custom {
+    margin: 10px;
+    height: 45px;
+    width: 45px;
+}
+.text-align-center {
+    vertical-align: middle;
+}

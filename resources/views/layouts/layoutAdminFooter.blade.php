@@ -25,6 +25,4 @@
           © 2019 Todos os direitos reservados
           </div>
         </div>
-      </footer>
-          
-
+</footer>

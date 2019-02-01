@@ -18,6 +18,7 @@ class UnitiesController extends Controller
     public function index()
     {
         $unities = Unity::all();
+        
         return view('institutions.unities.index', compact('unities'));
     }
 

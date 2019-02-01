@@ -1,44 +1,49 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="row">
-    <div class="col-lg-10 col-md-6">
-        <div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
-            <div class="container">
-                <h6> Disciplinas </h6>
+    <div class="row">
+        <div class="col s9">
+            <div class="breadcrumb-custom">
+                Instituições &sol; Unidades &sol; Cursos &sol; Disciplinas   
             </div>
         </div>
+        <div class="col s3 right-align">
+            <a class="waves-effect waves-light btn btn-create-custom" href="{{route('subjects.create')}}">
+                <i class="material-icons sm left">person_add</i>Cadastrar
+            </a>
+        </div>
     </div>
-    <div class="col-lg-2 col-md-6">
-        <a class="btn btn-success btn-1-custom p-1 my-1" href="{{route('subjects.create')}}">
-            <i class="material-icons centralizado">person_add</i>Cadastrar
-        </a>
+
+    <div class="breadcrumb-custom">
+        Instituição: {{$unity->institution->name}} / Unidade: {{$unity->name}}   
     </div>
-</div>
 
-    <h6>Instituição: {{$unity->institution->name}} / Unidade: {{$unity->name}}</h6>
-    <br/>            
+    @if (count($subjects))
+        <table class="table striped">
+            <thead>
+                <tr>
+                    <th>Nome</th> 
+                    <th>Curso</th>                
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+             
+                @foreach ($subjects as $subject)
+                <tr>
+                    <td>{{$subject->name}}</td>
+                    <td>{{$subject->course->name}}</td>
+                    <td>
+                        <a href="{{route('subjects.edit', ['subject' => $subject])}}">Alterar</a> |
+                        <a href="{{route('subjects.show', ['subject' => $subject])}}">Ver</a>
+                    </td>
+                </tr>
+                @endforeach
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th> 
-                <th>Curso</th>                
-                <th>Ação</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($subjects as $subject)
-            <tr>
-                <td>{{$subject->id}}</td>
-                <td>{{$subject->name}}</td>
-                <td>{{$subject->course->name}}</td>
-                <td>
-                    <a href="{{route('subjects.edit', ['subject' => $subject])}}">Alterar</a> |
-                    <a href="{{route('subjects.show', ['subject' => $subject])}}">Ver</a>
-                </td>
-            @endforeach
-        </tbody>
-    </table>
+            </tbody>
+        </table>        
+    @else
+        <span>Nenhum registro encontrado.</span>
+    @endif
+
 @endsection

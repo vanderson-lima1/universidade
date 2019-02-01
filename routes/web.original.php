@@ -15,15 +15,42 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin'
+
+], function () {
     Route::resource('institutions', 'InstitutionsController');
 });
 
-Route::group(['prefix' => 'institution','namespace' => 'Institution'], function () {
+Route::group([
+    'prefix' => 'institution',
+    'namespace' => 'Institution'
+
+], function () {
     Route::resource('unities', 'UnitiesController');
+});
+
+Route::group([
+    'prefix' => 'institution',
+    'namespace' => 'Institution'
+
+], function () {
     Route::resource('patients', 'PatientsController');
-    Route::resource('courses' , 'CoursesController');
+});
+
+Route::group([
+    'prefix' => 'institution',
+    'namespace' => 'Institution'
+
+], function () {
+    Route::resource('courses', 'CoursesController');
+});
+
+Route::group([
+    'prefix' => 'institution',
+    'namespace' => 'Institution'
+
+], function () {
     Route::resource('subjects', 'SubjectsController');
-    Route::resource('teachers', 'TeachersController');
-    Route::resource('students', 'StudentsController');
 });
