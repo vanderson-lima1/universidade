@@ -38,6 +38,10 @@ body {
     text-decoration: none;
     color: #fff;
     background: #039be5;
+    -webkit-transition: .7s ease-in-out;
+    -moz-transition: .7s ease-in-out;
+    -o-transition: .7s ease-in-out;
+    transition: .7s ease-in-out; 
 }
 .menu-custom-active {
     text-decoration: none;
