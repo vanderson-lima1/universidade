@@ -4,37 +4,37 @@
     <div class="row">
         <div class="col s9">
             <div class="breadcrumb-custom">
-                Instituições &sol; Unidades &sol; Cursos  
+                Instituições &sol; Unidades &sol; Professores  
             </div>
         </div>
         <div class="col s3 right-align">
-                <a class="waves-effect waves-light btn btn-create-custom {{$habilitarBotao ? '' : 'disabled'}}" href="{{route('courses.create')}}">
-                    <i class="material-icons sm left">person_add</i>Cadastrar
-                </a>
+            <a class="waves-effect waves-light btn btn-create-custom" href="{{route('courses.create')}}">
+                <i class="material-icons sm left">person_add</i>Cadastrar
+            </a>
         </div>
     </div>
 
     <div class="breadcrumb-custom">
-        Instituição: {{$unity->institution->name}} / Unidade: {{$unity->name}}   
+        Instituição:    
     </div>
-
-    @if (count($courses)) 
+    
+    @if (count($teachers))
         <table class="table striped">
             <thead>
                 <tr>
-                    <th>Nome</th> 
+                    <th>Nome</th>                 
                     <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
-
-                @foreach ($courses as $course)
+            
+                @foreach ($teachers as $teacher)
                 <tr>
-                    <td>{{$course->name}}</td>
+                    <td>{{$teacher->name}}</td>
                     <td>
                         <a class="tooltipped" data-position="top" data-tooltip="Alterar" href="{{route('courses.edit', ['course' => $course])}}">
                             <i class="material-icons">edit</i>
-                        </a> |
+                        </a>
                         <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('courses.show', ['course' => $course])}}">
                             <i class="material-icons">search</i>
                         </a>
@@ -43,9 +43,11 @@
                 @endforeach
 
             </tbody>
-        </table>        
-    @else
-        <span>Nenhum registro encontrado.</span>
+        </table>
+    @else  
+        <tr>
+            <span>Nenhum registro encontrado.</span>
+        </tr> 
     @endif
 
 @endsection

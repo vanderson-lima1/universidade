@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Unity;
+use App\Models\Institution;
 use App\Util\SessionInformation;
 
 class CoursesController extends Controller
@@ -18,11 +19,12 @@ class CoursesController extends Controller
     public function index()
     {
         $courses = Course::all();
-
+        // Valida para habilitar ou desabilitar botão de cadastro, respeitando hierarquia do modelo de dados.
+        $habilitarBotao = $this->consultarInstituicao();
         //retirar !!!
         $unity = SessionInformation::unityLoggedIn();
 
-        return view('institutions.courses.index', compact('courses', 'unity'));
+        return view('institutions.courses.index', compact('courses', 'unity', 'habilitarBotao'));
     }
 
     /**
@@ -116,4 +118,11 @@ class CoursesController extends Controller
             'name' => 'required|max:100',
         ]);
     }
+
+    /** Verificar se existe pelo menos uma unidade cadastrada, para habilitar ou desabilitar botão de cadastro. */
+    protected function consultarInstituicao() {
+        $resultado = ($institutions = Institution::all() ? true : false);
+        return $resultado;        
+    }
+
 }

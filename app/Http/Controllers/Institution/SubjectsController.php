@@ -27,6 +27,7 @@ class SubjectsController extends Controller
                             ->get();
 
         return view('institutions.subjects.index', compact('subjects', 'unity'));
+
     }
 
     /**

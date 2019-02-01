@@ -14,28 +14,37 @@
         </div>
     </div>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th> 
-                <th>Ação</th>                
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($institutions as $institution)
-            <tr>
-                <td>{{$institution->id}}</td>
-                <td>{{$institution->name}}</td>
-                <td>
-                    <a class="tooltipped" data-position="top" data-tooltip="Alterar" href="{{route('institutions.edit', ['institution' => $institution])}}">
-                        <i class="material-icons">edit</i>
-                    </a>
-                    <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('institutions.show', ['institution' => $institution])}}">
-                        <i class="material-icons">search</i>
-                    </a>
-                </td>
-            @endforeach            
-        </tbody>        
-    </table>    
+    @if (count($institutions)) 
+        <table class="table striped">
+            <thead>
+                <tr>
+                    <th>Nome</th> 
+                    <th>Ação</th>                
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach ($institutions as $institution)
+                <tr>
+                    <td>{{$institution->name}}</td>
+                    <td>
+                        <a class="tooltipped" data-position="top" data-tooltip="Alterar" href="{{route('institutions.edit', ['institution' => $institution])}}">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('institutions.show', ['institution' => $institution])}}">
+                            <i class="material-icons">search</i>
+                        </a>
+                        <a class="tooltipped" data-position="top" data-tooltip="Excluir" href="{{route('institutions.show', ['institution' => $institution])}}">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </td>
+                </tr>
+                @endforeach 
+
+            </tbody>        
+        </table>    
+    @else
+        <span>Nenhum registro encontrado.</span>    
+    @endif
+    
 @endsection

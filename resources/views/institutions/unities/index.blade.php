@@ -14,30 +14,41 @@
         </div>
     </div>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>                 
-                <th>Universidade</th> 
-                <th>Ação</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($unities as $unity)
-            <tr>
-                <td>{{$unity->id}}</td>
-                <td>{{$unity->name}}</td>
-                <td>{{$unity->institution->name}}</td>
-                <td>
-                    <a class="tooltipped" data-position="top" data-tooltip="Alterar" href="{{route('unities.edit', ['unity' => $unity])}}">
-                        <i class="material-icons">edit</i>
-                    </a>
-                    <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('unities.show', ['unity' => $unity])}}">
-                        <i class="material-icons">search</i>
-                    </a>
-                </td>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="breadcrumb-custom">
+        Instituição:    
+    </div>
+
+    @if (count($unities))
+        <table class="table striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>                 
+                    <th>Universidade</th> 
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                @foreach ($unities as $unity)
+                <tr>
+                    <td>{{$unity->name}}</td>
+                    <td>{{$unity->institution->name}}</td>
+                    <td>
+                        <a class="tooltipped" data-position="top" data-tooltip="Alterar" href="{{route('unities.edit', ['unity' => $unity])}}">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('unities.show', ['unity' => $unity])}}">
+                            <i class="material-icons">search</i>
+                        </a>
+                    </td>
+                </tr>
+                @endforeach
+        
+            </tbody>
+        </table>            
+    @else
+        <span>Nenhum registro encontrado.</span>
+    @endif
+
+    
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Institution;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Teacher;
 
 class TeachersController extends Controller
 {
@@ -14,7 +15,8 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        //
+        $teachers = Teacher::all();
+        return view('institutions.teachers.index', compact('teachers'));
     }
 
     /**

@@ -51,7 +51,7 @@ class InstitutionsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Institution $institution)
-    {
+    {   
         return view('admin.institutions.show', compact('institution'));
     }
 
