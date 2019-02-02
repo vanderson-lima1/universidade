@@ -113,7 +113,7 @@ class CoursesController extends Controller
         return redirect()->route('courses.index');
     }
 
-    protected function _validate($request) {
+    protected function _validate(Request $request) {
         $this->validate($request, [
             'name' => 'required|max:100',
         ]);
@@ -121,7 +121,7 @@ class CoursesController extends Controller
 
     /** Verificar se existe pelo menos uma unidade cadastrada, para habilitar ou desabilitar botão de cadastro. */
     protected function consultarInstituicao() {
-        $resultado = ($institutions = Institution::all() ? true : false);
+        $resultado = ($institutions = Institution::first() ? true : false);
         return $resultado;        
     }
 

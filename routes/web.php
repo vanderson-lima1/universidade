@@ -12,6 +12,29 @@
 */
 
 Route::get('/', function () {
+    return view('home');
+});
+
+Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
+    Route::resource('/', 'AdminController');
+});
+
+Route::group(['prefix' => 'institution','namespace' => 'Institution'], function () {
+    Route::resource('institutions', 'InstitutionsController');
+    Route::resource('unities', 'UnitiesController');
+    Route::resource('patients', 'PatientsController');
+    Route::resource('courses' , 'CoursesController');
+    Route::resource('subjects', 'SubjectsController');
+    Route::resource('teachers', 'TeachersController');
+    Route::resource('students', 'StudentsController');
+});
+
+
+
+
+/* Configuração estável = 02/02/2019 *** Backup
+
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -26,4 +49,4 @@ Route::group(['prefix' => 'institution','namespace' => 'Institution'], function 
     Route::resource('subjects', 'SubjectsController');
     Route::resource('teachers', 'TeachersController');
     Route::resource('students', 'StudentsController');
-});
+}); */

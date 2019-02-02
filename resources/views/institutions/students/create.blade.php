@@ -7,16 +7,16 @@
   </div>
 </div>
 
-    <h6> Novo Professor - Unidade: {{$unity->name}} </h6>
+    <h6> Novo Aluno - Unidade: {{$unity->name}} </h6>
     <br/>
     
     @include('util._erros')
 
-    <form method="POST" action="{{route('teachers.store')}}">
+    <form method="POST" action="{{route('students.store')}}">
         
-        @include('institutions.teachers._form')
+        @include('institutions.students._form')
 
         <button type="submit" class="btn btn-success">Cadastrar</button>
     </form>
-    <a class="btn btn-default" href="{{route('teachers.index')}}">&lArr; voltar a lista</a>
+    <a class="btn btn-default" href="{{route('students.index')}}">&lArr; voltar a lista</a>
 @endsection

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/materialize.css">
     <link rel="stylesheet" href="/css/style.css"> 
@@ -33,7 +34,7 @@
                     </a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
-                            <a href="# ">
+                            <a href="/">
                                 <i class="material-icons sm">directions_run</i>
                             </a>
                         </li>

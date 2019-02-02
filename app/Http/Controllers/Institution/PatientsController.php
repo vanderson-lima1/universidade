@@ -124,7 +124,6 @@ class PatientsController extends Controller
             'documentCPF' => 'required' ,
             'documentRG'=> 'required',
             'documentSUS' => 'required',
-
         ]);
     }
 }

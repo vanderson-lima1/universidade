@@ -1,13 +1,11 @@
 @extends('layouts.layout')
 @section('content')
 
-    <div class="row">
-        <div class="col s9">
-            <div class="breadcrumb-custom">
-                Instituições  
-            </div>
+    <div class="box-main-top">
+        <div class="box-main-left text-custom">
+            Instituição    
         </div>
-        <div class="col s3 right-align">
+        <div class="box-main-right">
             <a class="waves-effect waves-light btn btn-create-custom" href="{{route('institutions.create')}}">
                 <i class="material-icons sm left">person_add</i>Cadastrar
             </a>
@@ -44,7 +42,8 @@
             </tbody>        
         </table>    
     @else
-        <span>Nenhum registro encontrado.</span>    
+        <br>
+        <div class="alert-main default">Nenhuma instituição cadastrada.</div>
     @endif
     
 @endsection

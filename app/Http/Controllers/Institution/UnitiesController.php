@@ -17,9 +17,10 @@ class UnitiesController extends Controller
      */
     public function index()
     {
-        $unities = Unity::all();
-        
-        return view('institutions.unities.index', compact('unities'));
+        $unities = Unity::all();        
+        //retirar !!!
+        $institution = SessionInformation::institutionLoggedIn();
+        return view('institutions.unities.index', compact('unities','institution'));
     }
 
     /**
