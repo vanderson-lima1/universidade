@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Institution;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +16,7 @@ class InstitutionsController extends Controller
     public function index()
     {
         $institutions = Institution::all();
-        return view('admin.institutions.index', compact('institutions'));
+        return view('institutions.institutions.index', compact('institutions'));
     }
 
     /**
@@ -26,7 +26,7 @@ class InstitutionsController extends Controller
      */
     public function create()
     {
-        return view('admin.institutions.create', ['institution' => new Institution()]);
+        return view('institutions.institutions.create', ['institution' => new Institution()]);
     }
 
     /**
@@ -52,7 +52,7 @@ class InstitutionsController extends Controller
      */
     public function show(Institution $institution)
     {   
-        return view('admin.institutions.show', compact('institution'));
+        return view('institutions.institutions.show', compact('institution'));
     }
 
     /**
@@ -63,7 +63,7 @@ class InstitutionsController extends Controller
      */
     public function edit(Institution $institution)
     {
-        return view('admin.institutions.edit', compact('institution'));
+        return view('institutions.institutions.edit', compact('institution'));
     }
 
     /**

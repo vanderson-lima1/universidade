@@ -120,7 +120,7 @@ class SubjectsController extends Controller
         return redirect()->route('subjects.index');
     }
 
-    protected function _validate($request) {
+    protected function _validate(Request $request) {
         $this->validate($request, [
             'name' => 'required|max:100',
             'course_id' => 'required',

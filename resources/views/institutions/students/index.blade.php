@@ -6,13 +6,13 @@
             {{$unity->institution->name}} &sol; {{$unity->name}}  
         </div>
         <div class="box-main-right">
-            <a class="waves-effect waves-light btn btn-create-custom" href="{{route('teachers.create')}}">
+            <a class="waves-effect waves-light btn btn-create-custom" href="{{route('students.create')}}">
                 <i class="material-icons sm left">person_add</i>Cadastrar
             </a>
         </div>
     </div>
 
-    @if (count($teachers))
+    @if (count($students))
         <table class="table striped">
             <thead>
                 <tr>
@@ -22,14 +22,14 @@
             </thead>
             <tbody>
             
-                @foreach ($teachers as $teacher)
+                @foreach ($students as $student)
                 <tr>
-                    <td>{{$teacher->name}}</td>
+                    <td>{{$student->name}}</td>
                     <td>
-                        <a class="tooltipped" data-position="top" data-tooltip="Alterar" href="{{route('teachers.edit', ['teacher' => $teacher])}}">
+                        <a class="tooltipped" data-position="top" data-tooltip="Alterar" href="{{route('students.edit', ['student' => $student])}}">
                             <i class="material-icons">edit</i>
                         </a>
-                        <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('teachers.show', ['teacher' => $teacher])}}">
+                        <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('students.show', ['student' => $student])}}">
                             <i class="material-icons">search</i>
                         </a>
                     </td>
@@ -40,7 +40,7 @@
         </table>
     @else  
         <br>
-        <div class="alert-main default">Nenhum professor cadastrado.</div>
+        <div class="alert-main default">Nenhum aluno cadastrado.</div>
     @endif
 
 @endsection

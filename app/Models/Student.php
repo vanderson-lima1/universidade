@@ -10,6 +10,7 @@ class Student extends Model
         'name',
         'nrLessons',
         'period',
+        'unity_id',
     ];
 
     // ManyToOne ou OneToMany(Inverse) //

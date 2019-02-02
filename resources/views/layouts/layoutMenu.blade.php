@@ -7,17 +7,22 @@
                 // Obtém a URI da página, em seguida a transforma num array, separando "diretórios" por barra.
                 // Exemplo: http://localhost:8000/admin/institutions
                 // $url_server[0] = null
-                // $url_server[1] = admin
+                // $url_server[1] = admin *** (Deve ser obrigatoriamente 'admin').
                 // $url_server[2] = institutions
-                // $url_server[3] = null (erro)
+                // $url_server[3] = null (erro enquanto não executar nenhuma função - como 'edit').
                 $url_server = $_SERVER['REQUEST_URI'];
                 $url_server = explode('/', $url_server);
-                $url_server = $url_server[2];
+
+                if(empty($url_server[2]) && $url_server[1] === 'admin'){
+                    $url_server = $url_server[1]; 
+                }else {
+                    $url_server = $url_server[2];
+                }
 
             ?>
            
-            <li class="{{ $url_server == 'null' ? 'menu-custom-active' : '' }}">                                 
-                <a class="{{ $url_server == 'null' ? '' : '' }}" href="{{route('institutions.index')}}">
+            <li class="{{ $url_server == 'admin' ? 'menu-custom-active' : '' }}">                                 
+                <a class="{{ $url_server == 'admin' ? 'a-link-active' : '' }}" href="{{route('index')}}">
                     <i class="material-icons centralizado">person</i>
                     Início
                 </a>

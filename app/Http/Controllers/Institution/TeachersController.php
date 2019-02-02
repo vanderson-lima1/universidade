@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Institution;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
+use App\Models\Unity;
+use App\Models\Institution;
+use App\Util\SessionInformation;
 
 class TeachersController extends Controller
 {
@@ -16,7 +19,9 @@ class TeachersController extends Controller
     public function index()
     {
         $teachers = Teacher::all();
-        return view('institutions.teachers.index', compact('teachers'));
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+        return view('institutions.teachers.index', compact('teachers','unity'));
     }
 
     /**
@@ -26,7 +31,9 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        //
+        //retirar!!!
+        $unity = SessionInformation::unityLoggedIn(); 
+        return view('institutions.teachers.create', ['teacher' => new Teacher(), 'unity' => $unity]);
     }
 
     /**
@@ -37,7 +44,16 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        $data['unity_id'] = $unity->id;        
+        Teacher::Create($data);
+        return redirect()->route('teachers.index');
     }
 
     /**
@@ -46,9 +62,9 @@ class TeachersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Teacher $teacher)
     {
-        //
+        return view('institutions.teachers.show', compact('teacher'));
     }
 
     /**
@@ -57,9 +73,9 @@ class TeachersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Teacher $teacher)
     {
-        //
+        return view('institutions.teachers.edit',compact('teacher'));
     }
 
     /**
@@ -69,9 +85,16 @@ class TeachersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Teacher $teacher)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        $teacher->fill($data);
+        $teacher->save();
+
+        return redirect()->route('teachers.index');
     }
 
     /**
@@ -80,8 +103,17 @@ class TeachersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->delete();
+        return redirect()->route('teachers.index');
     }
+
+    protected function _validate(Request $request) 
+    {
+        $this->validate($request, [
+            'name' => 'required|max:100',
+        ]);
+    }
+
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Institution;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Student;
+use App\Models\Unity;
+use App\Models\Institution;
+use App\Util\SessionInformation;
 
 class StudentsController extends Controller
 {
@@ -14,7 +18,10 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        return ("Alunos!");
+        $students = Student::all();
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+        return view('institutions.students.index', compact('students','unity'));
     }
 
     /**
@@ -24,7 +31,9 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        //
+        //retirar!!!
+        $unity = SessionInformation::unityLoggedIn(); 
+        return view('institutions.students.create', ['student' => new Student(), 'unity' => $unity]);
     }
 
     /**
@@ -35,7 +44,16 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        $data['unity_id'] = $unity->id;        
+        Student::Create($data);
+        return redirect()->route('students.index');
     }
 
     /**
@@ -44,10 +62,10 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        //
-    }
+        return view('institutions.students.show', compact('student'));
+    }   
 
     /**
      * Show the form for editing the specified resource.
@@ -55,9 +73,9 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
+        return view('institutions.students.edit', compact('student'));
     }
 
     /**
@@ -67,9 +85,16 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        $student->fill($data);
+        $student->save();
+
+        return redirect()->route('students.index');
     }
 
     /**
@@ -78,8 +103,17 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('students.index');
     }
+
+    protected function _validate(Request $request) 
+    {
+        $this->validate($request, [
+            'name' => 'required|max:100',
+        ]);
+    }
+
 }
