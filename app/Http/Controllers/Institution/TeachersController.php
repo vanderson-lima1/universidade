@@ -18,9 +18,11 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
         //retirar !!!
         $unity = SessionInformation::unityLoggedIn();
+        
+        $teachers = Teacher::whereUnityId($unity->id)->get();
+
         return view('institutions.teachers.index', compact('teachers','unity'));
     }
 

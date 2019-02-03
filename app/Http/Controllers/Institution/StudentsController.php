@@ -18,9 +18,11 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
         //retirar !!!
         $unity = SessionInformation::unityLoggedIn();
+
+        $students = Student::whereUnityId($unity->id)->get();        
+        
         return view('institutions.students.index', compact('students','unity'));
     }
 

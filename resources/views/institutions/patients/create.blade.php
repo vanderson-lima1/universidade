@@ -12,7 +12,7 @@
     
     @include('util._erros')
 
-    <form method="POST" action="{{route('patients.store')}}">
+    <form class="col s12" method="POST" action="{{route('patients.store')}}">
         
         @include('institutions.patients._form')
 

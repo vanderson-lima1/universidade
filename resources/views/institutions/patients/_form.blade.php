@@ -1,37 +1,44 @@
       {{csrf_field()}}
-      <div class="form-group">
+      
+      <div class="row input field col s12">
          <label for="name">Nome</label>
-         <input class="form-control" id="name" name="name" value="{{old('name',$patient->name)}}">
+         <input class="validate" id="name" name="name" value="{{old('name',$patient->name)}}">
       </div>  
 
       @php
         $sex = $patient->sex;
       @endphp
-      <div class="radio">
-         <label>
-            <input type="radio" name="sex" value="m" {{old('sex',$sex) == 'm'?'checked="checked"': ''}}> Masculino
-         </label>
-      </div>
 
-       <div class="radio">
-        <label>
-            <input type="radio" name="sex" value="f" {{old('sex',$sex) == 'f'?'checked="checked"': ''}}> Feminino
-        </label>
-      </div>
+      <div class="row input field col s12">
+         <label for="sex">Sexo</label>
+         <p>
+            <label>
+               <input class="with-gap" type="radio" name="sex" value="m" {{old('sex',$sex) == 'm'?'checked': ''}}>
+               <span> Masculino </span>
+            </label>
+         </p>
+
+         <p>
+           <label>
+               <input class="with-gap" type="radio" name="sex" value="f" {{old('sex',$sex) == 'f'?'checked': ''}}>
+               <span> Feminino </span>
+           </label>
+         </p>
+      </div>      
 
       @php
          $periods = $patient::PERIOD;
       @endphp
 
-      <div class="form-group">
+      <div class="row input field col s12">
          <label for="period">Período</label>
-         <select class="form-control" name="period" id="period" value="{{$patient->period}}">
-            <option value="">Selecione o período para consulta</option>
-            @foreach ($periods as $key => $value)
-               <option value="{{$key}}" {{old('period',$patient->period) == $key ?"selected='selected'" : ""}}>{{$value}}</option>    
-            @endforeach            
+         <select  id="period" name="period">                        
+               <option value="" disabled selected> Escolha o período para consulta</option>
+                  @foreach ($periods as $key => $value)
+                     <option value="{{$key}}" {{old('period',$patient->period) == $key ? 'selected' : ''}}>{{$value}}</option>   
+                  @endforeach                        
          </select>
-      </div>      
+      </div>
 
       <div class="form-group">
          <label for="phone">Celular </label>

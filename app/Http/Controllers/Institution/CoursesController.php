@@ -18,11 +18,12 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
-        // Valida para habilitar ou desabilitar botão de cadastro, respeitando hierarquia do modelo de dados.
-        $habilitarBotao = $this->consultarInstituicao();
         //retirar !!!
         $unity = SessionInformation::unityLoggedIn();
+
+        $courses = Course::whereUnityId($unity->id)->get();
+        // Valida para habilitar ou desabilitar botão de cadastro, respeitando hierarquia do modelo de dados.
+        $habilitarBotao = $this->consultarInstituicao();        
 
         return view('institutions.courses.index', compact('courses', 'unity', 'habilitarBotao'));
     }

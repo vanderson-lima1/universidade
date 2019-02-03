@@ -17,10 +17,10 @@ class PatientsController extends Controller
      */
     public function index()
     {
-        $patients = Patient::all();
-
         //retirar!!!
         $unity = SessionInformation::unityLoggedIn();   
+        
+        $patients = Patient::whereUnityId($unity->id)->get();
 
         return view('institutions.patients.index', compact('patients','unity'));
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Institution;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Institution;
+use App\Util\SessionInformation;
 
 class InstitutionsController extends Controller
 {
@@ -15,7 +16,10 @@ class InstitutionsController extends Controller
      */
     public function index()
     {
-        $institutions = Institution::all();
+        // Retirar !!
+        $institution = SessionInformation::institutionLoggedIn();
+
+        $institutions = Institution::whereId($institution->id)->get();
         return view('institutions.institutions.index', compact('institutions'));
     }
 
