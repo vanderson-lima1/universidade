@@ -27,6 +27,7 @@ Route::group(['prefix' => 'institution','namespace' => 'Institution'], function 
     Route::resource('subjects', 'SubjectsController');
     Route::resource('teachers', 'TeachersController');
     Route::resource('students', 'StudentsController');
+    Route::resource('employees', 'EmployeesController');
 });
 
 

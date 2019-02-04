@@ -69,6 +69,12 @@
                     Aluno
                 </a>
             </li>
+            <li class="{{ $url_server == 'employees' ? 'menu-custom-active' : '' }}"> 
+                <a class="{{ $url_server == 'employees' ? 'a-link-active' : '' }}" href="{{route('employees.index')}}">
+                    <i class="material-icons centralizado">assignment_ind</i>
+                    Funcionário
+                </a>
+            </li>
         </ul>
     </div>
 </div>

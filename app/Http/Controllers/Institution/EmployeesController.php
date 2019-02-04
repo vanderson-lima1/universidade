@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Institution;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use App\Models\Unity;
+use App\Util\SessionInformation;
 
 class EmployeesController extends Controller
 {
@@ -14,7 +17,12 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        //
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+        
+        $employees = Employee::whereUnityId($unity->id)->get();
+
+        return view('institutions.employees.index', compact('employees','unity'));
     }
 
     /**
@@ -24,7 +32,9 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        //
+        //retirar!!!
+        $unity = SessionInformation::unityLoggedIn(); 
+        return view('institutions.employees.create', ['employee' => new Employee(), 'unity' => $unity]);
     }
 
     /**
@@ -35,7 +45,16 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        //retirar !!!
+        $unity = SessionInformation::unityLoggedIn();
+
+        $data['unity_id'] = $unity->id;        
+        Employee::Create($data);
+        return redirect()->route('employees.index');
     }
 
     /**
@@ -44,9 +63,9 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employee $employee)
     {
-        //
+        return view('institutions.employees.show', compact('employee'));
     }
 
     /**
@@ -55,9 +74,9 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employee $employee)
     {
-        //
+        return view('institutions.employees.edit',compact('employee'));
     }
 
     /**
@@ -67,9 +86,16 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Employee $employee)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        $employee->fill($data);
+        $employee->save();
+
+        return redirect()->route('employees.index');
     }
 
     /**
@@ -78,8 +104,16 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->route('employees.index');
     }
+
+    protected function _validate(Request $request) 
+    {
+        $this->validate($request, [
+            'name' => 'required|max:100',
+        ]);
+    }    
 }
