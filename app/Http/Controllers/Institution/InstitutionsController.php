@@ -54,9 +54,14 @@ class InstitutionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Institution $institution)
+    public function show(Institution $institution, Request $request)
     {   
-        return view('institutions.institutions.show', compact('institution'));
+        $acao = $request->get('acao');
+        if (empty($acao) || $acao === "delete") {
+            return view('institutions.institutions.show', compact('institution','acao'));
+        }else{
+            return redirect()->route('institutions.index');
+        }
     }
 
     /**

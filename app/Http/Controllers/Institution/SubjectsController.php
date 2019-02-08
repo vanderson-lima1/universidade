@@ -68,9 +68,14 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
-    {
-        return view('institutions.subjects.show', compact('subject'));
+    public function show(Subject $subject, Request $request)
+    {   
+        $acao = $request->get('acao');
+        if (empty($acao) || $acao === "delete") {
+            return view('institutions.subjects.show', compact('subject','acao'));
+        }else{
+            return redirect()->route('institutions.subjects.index');
+        }
     }
 
     /**

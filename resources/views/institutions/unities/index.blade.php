@@ -1,12 +1,12 @@
 @extends('layouts.layout')
 @section('content')
 
-    <div class="box-main-top">
+    <div class="container-main-top">
         <div class="box-main-left text-custom">
             {{$institution->name}}    
         </div>
         <div class="box-main-right">
-            <a class="waves-effect waves-light btn btn-create-custom" href="{{route('unities.create')}}">
+            <a class="waves-effect waves-light btn btn-create" href="{{route('unities.create')}}">
                 <i class="material-icons sm left">person_add</i>Cadastrar
             </a>
         </div>
@@ -33,6 +33,9 @@
                         </a>
                         <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('unities.show', ['unity' => $unity])}}">
                             <i class="material-icons">search</i>
+                        </a>
+                        <a class="tooltipped" data-position="top" data-tooltip="Excluir" href="{{route('unities.show', ['unity' => $unity, 'acao' =>'delete'])}}">
+                            <i class="material-icons">delete</i>
                         </a>
                     </td>
                 </tr>

@@ -1,23 +1,26 @@
 @extends('layouts.layout')
 @section('content')  
 
-<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
-  <div class="container">
-    <h6> Universidade {{$unity->institution->name}} </h6>
-  </div>
-</div>
+    <div class="container-main-top">
+        <div class="box-main-left text-custom">
+            Universidade {{$unity->institution->name}} /  Unidade {{$unity->institution->name}}
+        </div>
+    </div>
+    <br>
 
-    <h6> Nova Disciplina - Unidade: {{$unity->name}} </h6>
-    <br/>
-    
     @include('util._erros')
 
     <form method="POST" action="{{route('subjects.store')}}">
         
         @include('institutions.subjects._form')
 
-        <br> </br>
-        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <div class="box-button-dab">
+            <button class="waves-effect waves-light btn btn-create" type="submit">
+                Cadastrar
+            </button>
+            <a class="waves-effect waves-light btn btn-back" href="{{route('subjects.index')}}"> voltar a lista</a>
+        </div>
+
     </form>
-    <a class="btn btn-default" href="{{route('subjects.index')}}">&lArr; voltar a lista</a>
+
 @endsection

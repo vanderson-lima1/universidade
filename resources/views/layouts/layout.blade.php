@@ -51,14 +51,16 @@
                         <!-- Menu -->
                     </div>
 
-                    <div class="col s9 ">
-                        <div class="main-custom">
-                            <!-- Conteúdo -->
-                            @yield('content')
-                            <br><br><br>
-                            <!-- Conteúdo -->
-                        </div>
-                    </div>
+                    <section>
+                        <main class="col s9 ">
+                            <div class="main-custom">
+                                <!-- Conteúdo -->
+                                @yield('content')
+                                <br><br><br>
+                                <!-- Conteúdo -->
+                            </div>
+                        </main>
+                    </section>
             </div>
         </div>
 

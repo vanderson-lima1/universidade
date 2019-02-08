@@ -64,9 +64,14 @@ class TeachersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
-    {
-        return view('institutions.teachers.show', compact('teacher'));
+    public function show(Teacher $teacher, Request $request)
+    {   
+        $acao = $request->get('acao');
+        if (empty($acao) || $acao === "delete") {
+            return view('institutions.teachers.show', compact('teacher','acao'));
+        }else{
+            return redirect()->route('institutions.teachers.index');
+        }
     }
 
     /**

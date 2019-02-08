@@ -1,22 +1,27 @@
 @extends('layouts.layout')
 @section('content')    
 
-<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
-  <div class="container">
-    <h6> Alterar Universidade  </h6>
+  <div class="container-main-top">
+      <div class="box-main-left text-custom">
+          Alterar Instituição    
+      </div>
   </div>
-</div>
+  <br>
 
     @include('util._erros')
-    
+
     <form method="POST" action="{{route('institutions.update', ['id' => $institution->id])}}">        
         {{method_field('PUT')}}
 
         @include('institutions.institutions._form')
-        
-        <button type="submit" class="btn btn-primary">Alterar</button>
-    </form>
 
-    <a class="btn btn-default" href="{{route('institutions.index')}}">&lArr; voltar a lista</a>
+        <div class="box-button-dab">
+            <button class="waves-effect waves-light btn btn-create" type="submit">
+                Confirmar alteração
+            </button>
+            <a class="waves-effect waves-light btn btn-back" href="{{route('institutions.index')}}"> voltar a lista</a>
+        </div>        
+
+    </form>
 
 @endsection

@@ -64,9 +64,14 @@ class PatientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)    
-    {
-        return view('institutions.patients.show', compact('patient'));
+    public function show(Patient $patient, Request $request)
+    {   
+        $acao = $request->get('acao');
+        if (empty($acao) || $acao === "delete") {
+            return view('institutions.patients.show', compact('patient','acao'));
+        }else{
+            return redirect()->route('institutions.patients.index');
+        }
     }
 
     /**

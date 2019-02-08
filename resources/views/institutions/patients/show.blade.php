@@ -1,64 +1,69 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
-  <div class="container">
-    <h6> Instituição {{$patient->unity->institution->name}}  </h6>
-  </div>
-</div>
+    <div class="container-main-top">
+        <div class="box-main-left text-custom">
+                Instituição {{$patient->unity->institution->name}} / Dados Paciente Unidade {{$patient->unity->name}}    
+        </div>
+    </div>
 
-    <h4> Dados Paciente Unidade {{$patient->unity->name}} </h4>
-    <br/> 
-    
     <form id="form-delete" style="display: none" action="{{route('patients.destroy', ['patient' => $patient->id ]) }}" method="POST">
         {{csrf_field()}}
         {{method_field('DELETE')}}
     </form>
 
-    <table class="table table-bordered">
+    @php /*Verifica se a ação é para excluir e apresenta mensagem de alerta.*/ @endphp
+    @if($acao === "delete") 
+        <br>
+        <div class="alert-main warning">Atenção, essa operação é irreversível. Tenha certeza do que está prestes a fazer.</div>
+    @endif
+
+    <table class="table striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th> 
+                <th>Sexo</th>
+                <th>Período</th>
+                <th>Telefone</th> 
+                <th>CPF</th> 
+                <th>RG</th> 
+                <th>SUS</th>  
+            </tr>    
+        </thead> 
         <tbody>
             <tr>
-                <th scope="row">ID</th>
                 <td>{{$patient->id}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Nome</th> 
                 <td>{{$patient->name}}</td>
-            </tr>    
-            <tr>
-                <th scope="row">Sexo</th> 
                 <td>{{$patient->sex == 'm' ? 'Masculino' : 'Feminino'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Período</th> 
                 <td>{{array_values(App\Models\Patient::PERIOD)[$patient->period-1]}}</td>
-            </tr>    
-            <tr>
-                <th scope="row">Telefone</th> 
                 <td>{{$patient->phone}}</td>
-            </tr>    
-            <tr>
-                <th scope="row">CPF</th> 
                 <td>{{$patient->documentCPF}}</td>
-            </tr>    
-            <tr>
-                <th scope="row">RG</th> 
                 <td>{{$patient->documentRG}}</td>
-            </tr>    
-            <tr>
-                <th scope="row">SUS</th> 
                 <td>{{$patient->documentSUS}}</td>
             </tr>
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{route('patients.edit', ['patient' => $patient->id ]) }}">Alterar</a>
+    @php /*Verifica se a ação é para excluir e apresenta botão de alteração.*/ @endphp
+    @if($acao === "delete") 
+        <div class="box-button-dab">
+            <a class="waves-effect waves-light btn btn-delete" href="{{route('patients.destroy', ['patient' => $patient->id ]) }}"
+                    onclick="event.preventDefault();if(confirm('Deseja excluir este item?')){document.getElementById('form-delete').submit();}"
+                >
+                Excluir
+            </a>
+            <a class="waves-effect waves-light btn btn-back" href="{{route('patients.index')}}"> voltar a lista</a>
+        </div> 
 
-    <a class="btn btn-danger" href="{{route('patients.destroy', ['patient' => $patient->id ]) }}"
-    onclick="event.preventDefault();if(confirm('Deseja excluir este item?')){document.getElementById('form-delete').submit();}"
->Excluir</a>
+    @else @php /* Apresenta botão de alteração */ @endphp
+        
+        <div class="box-button-dab">
+            <a class="waves-effect waves-light btn btn-alter" href="{{route('patients.edit', ['patient' => $patient->id ]) }}">
+                Alterar
+            </a>
+            <a class="waves-effect waves-light btn btn-back" href="{{route('patients.index')}}"> voltar a lista</a>
+        </div>
+    @endif   
 
-    <br/><br/>
-
-    <a class="btn btn-default" href="{{route('patients.index')}}">&lArr; voltar a lista</a>
 @endsection

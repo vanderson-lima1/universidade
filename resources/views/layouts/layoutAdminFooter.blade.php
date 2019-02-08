@@ -1,6 +1,6 @@
-    <script type="text/javascript" src="/js/app.js"></script> 
+    <script src="/js/app.js"></script> 
     <script src="/js/materialize.js"></script>
-    <script src="/js/custom.js"></script>  
+    <script src="/js/custom.js"></script> 
 
 <br><br>
 

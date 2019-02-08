@@ -64,10 +64,16 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
-    {
-        return view('institutions.students.show', compact('student'));
-    }   
+    public function show(Student $student, Request $request)
+    {   
+        $acao = $request->get('acao');
+        if (empty($acao) || $acao === "delete") {
+            return view('institutions.students.show', compact('student','acao'));
+        }else{
+            return redirect()->route('institutions.students.index');
+        }
+    }
+
 
     /**
      * Show the form for editing the specified resource.

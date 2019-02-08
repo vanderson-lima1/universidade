@@ -1,38 +1,55 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
-  <div class="container">
-    <h6> Detalhe da Instituição </h6>
-  </div>
-</div>
-    
+    <div class="container-main-top">
+        <div class="box-main-left text-custom">
+            Instituição    
+        </div>
+    </div>
+
     <form id="form-delete" style="display: none" action="{{route('institutions.destroy', ['institution' => $institution->id ]) }}" method="POST">
         {{csrf_field()}}
         {{method_field('DELETE')}}
     </form>
 
-    <br/>
-    <table class="table table-bordered">
+    @php /*Verifica se a ação é para excluir e apresenta mensagem de alerta.*/ @endphp
+    @if($acao === "delete") 
+        <br>
+        <div class="alert-main warning">Atenção, essa operação é irreversível. Tenha certeza do que está prestes a fazer.</div>
+    @endif
+
+    <table class="table striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead> 
         <tbody>
             <tr>
-                <th scope="row">ID</th>
-                <td>{{$institution->id}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Nome</th> 
                 <td>{{$institution->name}}</td>
             </tr>    
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{route('institutions.edit', ['institution' => $institution->id ]) }}">Alterar</a>
+    @php /*Verifica se a ação é para excluir e apresenta botão de alteração.*/ @endphp
+    @if($acao === "delete") 
+        <div class="box-button-dab">
+            <a class="waves-effect waves-light btn btn-delete" href="{{route('institutions.destroy', ['institution' => $institution->id ]) }}"
+                    onclick="event.preventDefault();if(confirm('Deseja excluir este item?')){document.getElementById('form-delete').submit();}"
+                >
+                Excluir
+            </a>
+            <a class="waves-effect waves-light btn btn-back" href="{{route('institutions.index')}}"> voltar a lista</a>
+        </div> 
 
-    <a class="btn btn-danger" href="{{route('institutions.destroy', ['institution' => $institution->id ]) }}"
-        onclick="event.preventDefault();if(confirm('Deseja excluir este item?')){document.getElementById('form-delete').submit();}"
-    >Excluir</a>
-
-    <br/><br/>
-
-    <a class="btn btn-default" href="{{route('institutions.index')}}">&lArr; voltar a lista</a>
+    @else @php /* Apresenta botão de alteração */ @endphp
+        
+        <div class="box-button-dab">
+            <a class="waves-effect waves-light btn btn-alter" href="{{route('institutions.edit', ['institution' => $institution->id ]) }}">
+                Alterar
+            </a>
+            <a class="waves-effect waves-light btn btn-back" href="{{route('institutions.index')}}"> voltar a lista</a>
+        </div>
+    @endif   
+    
 @endsection

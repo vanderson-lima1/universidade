@@ -1,12 +1,12 @@
 @extends('layouts.layout')
 @section('content')
 
-    <div class="box-main-top">
+    <div class="container-main-top">
         <div class="box-main-left text-custom">
-            {{$unity->institution->name}} &sol; {{$unity->name}}   
+                {{$unity->institution->name}} &sol; {{$unity->name}}    
         </div>
         <div class="box-main-right">
-            <a class="waves-effect waves-light btn btn-create-custom {{$habilitarBotao ? '' : 'disabled'}}" href="{{route('courses.create')}}">
+            <a class="waves-effect waves-light btn btn-create {{$habilitarBotao ? '' : 'disabled'}}" href="{{route('courses.create')}}">
                 <i class="material-icons sm left">person_add</i>Cadastrar
             </a>
         </div>
@@ -28,9 +28,12 @@
                     <td>
                         <a class="tooltipped" data-position="top" data-tooltip="Alterar" href="{{route('courses.edit', ['course' => $course])}}">
                             <i class="material-icons">edit</i>
-                        </a> |
+                        </a>
                         <a class="tooltipped" data-position="top" data-tooltip="Visualizar" href="{{route('courses.show', ['course' => $course])}}">
                             <i class="material-icons">search</i>
+                        </a>
+                        <a class="tooltipped" data-position="top" data-tooltip="Excluir" href="{{route('courses.show', ['course' => $course, 'acao' =>'delete'])}}">
+                            <i class="material-icons">delete</i>
                         </a>
                     </td>
                 </tr>

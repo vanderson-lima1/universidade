@@ -61,9 +61,14 @@ class UnitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Unity $unity)    
-    {
-        return view('institutions.unities.show', compact('unity'));
+    public function show(Unity $unity, Request $request)
+    {   
+        $acao = $request->get('acao');
+        if (empty($acao) || $acao === "delete") {
+            return view('institutions.unities.show', compact('unity','acao'));
+        }else{
+            return redirect()->route('institutions.unities.index');
+        }
     }
 
     /**

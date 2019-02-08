@@ -1,11 +1,13 @@
 @extends('layouts.layout')
 @section('content')    
 
-<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
-  <div class="container">
-    <h6> Nova Instituição  </h6>
+  <div class="container-main-top">
+      <div class="box-main-left text-custom">
+          Nova Instituição    
+      </div>
   </div>
-</div>
+
+  <br>
     
     @include('util._erros')
 
@@ -13,7 +15,13 @@
         
         @include('institutions.institutions._form')
 
-        <button type="submit" class="btn btn-success ">Cadastrar</button>
+        <div class="box-button-dab">
+            <button class="waves-effect waves-light btn btn-create" type="submit">
+                Cadastrar
+            </button>
+            <a class="waves-effect waves-light btn btn-back" href="{{route('institutions.index')}}"> voltar a lista</a>
+        </div>
+
     </form>
-    <a class="btn btn-default" href="{{route('institutions.index')}}">&lArr; voltar a lista</a>
+
 @endsection

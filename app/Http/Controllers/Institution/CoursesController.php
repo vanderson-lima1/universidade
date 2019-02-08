@@ -67,9 +67,14 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
-    {
-        return view('institutions.courses.show', compact('course'));
+    public function show(Course $course, Request $request)
+    {   
+        $acao = $request->get('acao');
+        if (empty($acao) || $acao === "delete") {
+            return view('institutions.courses.show', compact('course','acao'));
+        }else{
+            return redirect()->route('institutions.courses.index');
+        }
     }
 
     /**

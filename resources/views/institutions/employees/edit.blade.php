@@ -1,14 +1,13 @@
 @extends('layouts.layout')
 @section('content')    
 
-<div class="jumbotron jumbotron-fluid jumbotron-fluid-custom jumbotron-title-page-custom">
-  <div class="container">
-    <h6> Universidade {{$employee->unity->institution->name}}  </h6>
-  </div>
-</div>
+    <div class="container-main-top">
+        <div class="box-main-left text-custom">
+            Universidade {{$employee->unity->institution->name}} / Alteração de Funcionário - Unidade {{$employee->unity->name}}   
+        </div>
+    </div>
+    <br>
 
-    <h4> Alteração de Funcionário - Unidade {{$employee->unity->name}} </h4>
-    
     @include('util._erros')
     
     <form method="POST" action="{{route('employees.update', ['id' => $employee->id])}}">        
@@ -16,9 +15,13 @@
 
         @include('institutions.employees._form')
         
-        <button type="submit" class="btn btn-primary">Alterar</button>
+        <div class="box-button-dab">
+            <button class="waves-effect waves-light btn btn-create" type="submit">
+                Confirmar alteração
+            </button>
+            <a class="waves-effect waves-light btn btn-back" href="{{route('employees.index')}}"> voltar a lista</a>
+        </div>
+      
     </form>
-
-    <a class="btn btn-default" href="{{route('employees.index')}}">&lArr; voltar a lista</a>
 
 @endsection

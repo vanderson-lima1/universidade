@@ -63,9 +63,14 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
-    {
-        return view('institutions.employees.show', compact('employee'));
+    public function show(Employee $employee, Request $request)
+    {   
+        $acao = $request->get('acao');
+        if (empty($acao) || $acao === "delete") {
+            return view('institutions.employees.show', compact('employee','acao'));
+        }else{
+            return redirect()->route('institutions.employees.index');
+        }
     }
 
     /**
