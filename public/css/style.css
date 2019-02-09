@@ -235,6 +235,7 @@ body {
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;
+    padding-left: 15px !important; /* Espaçar texto de todas as mensagens a esquerda. */
 }
 .alert-main.default {
     color: #0c5460;
@@ -250,6 +251,11 @@ body {
     color: #856404;
     background-color: #fff3cd;
     border-color: #ffeeba;
+}
+.alert-main.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }
 /* ======================================================================= */
 /* === Correção de possível "Bug" na tag SELECT (Materialize) ============ */

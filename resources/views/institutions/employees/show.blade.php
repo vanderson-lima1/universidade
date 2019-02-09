@@ -15,7 +15,7 @@
     @php /*Verifica se a ação é para excluir e apresenta mensagem de alerta.*/ @endphp
     @if($acao === "delete") 
         <br>
-        <div class="alert-main warning">Atenção, essa operação é irreversível. Tenha certeza do que está prestes a fazer.</div>
+        <div class="alert-main warning pulse">Atenção, essa operação é irreversível. Tenha certeza do que está prestes a fazer.</div>
     @endif
 
     <table class="table striped">

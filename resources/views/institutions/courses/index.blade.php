@@ -12,6 +12,22 @@
         </div>
     </div>
 
+    @php /* Apresenta mensagem de SUCESSO de acordo com ação do usuário. */ @endphp
+    @if($acao === "inclusao") 
+        <br>
+        <div id="mensagemDeConfirmacao" class="alert-main success pulse">Cadastro efetuado com sucesso.</div>
+    @endif
+
+    @if($acao === "alteracao") 
+        <br>
+        <div id="mensagemDeConfirmacao" class="alert-main success pulse">Alteração efetuada com sucesso.</div>
+    @endif
+
+    @if($acao === "exclusao") 
+        <br>  
+        <div id="mensagemDeConfirmacao" class="alert-main success pulse">Exclusão efetuada com sucesso.</div>
+    @endif
+
     @if (count($courses)) 
         <table class="table striped">
             <thead>

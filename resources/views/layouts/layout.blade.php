@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        @include('layouts.layoutAdminFooter')
+        @include('layouts.layoutFooter')
 
     </body>
 </html>

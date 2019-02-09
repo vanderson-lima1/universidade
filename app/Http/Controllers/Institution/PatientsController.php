@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Institution;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PatientRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use App\Models\Unity;
@@ -46,7 +47,7 @@ class PatientsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->_validate($request);
+        $this->_validate($request); 
         $data = $request->all();
         $data['default'] = $request->has('defaulter');
 
@@ -122,13 +123,14 @@ class PatientsController extends Controller
         $period = implode(',', array_keys(Patient::PERIOD));
         
         $this->validate($request, [
-            'name' => 'required|max:100',
-            'sex' => 'required|in:m,f',
-            'period' =>  "required|in:$period" ,
-            'phone' => 'required',
-            'documentCPF' => 'required' ,
-            'documentRG'=> 'required',
-            'documentSUS' => 'required',
+            'name'        => 'required|max:100',
+            'sex'         => 'required|in:m,f',
+            'period'      => "required|in:$period" ,
+            'phone'       => 'required|numeric',
+            'documentCPF' => 'required|numeric|max:12' ,
+            'documentRG'  => 'required|numeric|max:09',
+            'documentSUS' => 'required|numeric|max:16',
         ]);
+
     }
 }

@@ -127,7 +127,7 @@ class SubjectsController extends Controller
 
     protected function _validate(Request $request) {
         $this->validate($request, [
-            'name' => 'required|max:100',
+            'name'      => 'required|max:100',
             'course_id' => 'required',
         ]);
     }

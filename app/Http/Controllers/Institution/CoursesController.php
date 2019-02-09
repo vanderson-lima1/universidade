@@ -16,16 +16,18 @@ class CoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //retirar !!!
         $unity = SessionInformation::unityLoggedIn();
-
+        $acao = $request->get('acao');
         $courses = Course::whereUnityId($unity->id)->get();
+
+        // Depois adequar esta regra corretamente. 
         // Valida para habilitar ou desabilitar botão de cadastro, respeitando hierarquia do modelo de dados.
         $habilitarBotao = $this->consultarInstituicao();        
 
-        return view('institutions.courses.index', compact('courses', 'unity', 'habilitarBotao'));
+        return view('institutions.courses.index', compact('courses','unity','habilitarBotao','acao'));
     }
 
     /**
@@ -115,8 +117,8 @@ class CoursesController extends Controller
      */
     public function destroy(Course $course)
     {
-        $course->delete();
-        return redirect()->route('courses.index');
+        $acao = $course->delete() ? 'exclusao' : 'erro';
+        return redirect()->route('courses.index', compact('acao'));
     }
 
     protected function _validate(Request $request) {

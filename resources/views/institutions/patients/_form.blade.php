@@ -49,7 +49,7 @@
       <div class="form-group">
          <label for="documentRG">RG</label>
          <input class="form-control" id="documentRG" name="documentRG"
-                value="{{old('documentRG',$patient->documentRG)}}">
+                value="{{old('documentRG',$patient->documentRGXXX)}}">
       </div>
 
       <div class="form-group">
@@ -59,7 +59,7 @@
       </div>
 
       <div class="form-group">
-         <label for="documentCPF">SUS</label>
+         <label for="documentSUS">SUS</label>
          <input class="form-control" id="documentSUS" name="documentSUS"
                 value="{{old('documentSUS',$patient->documentSUS)}}">
       </div>

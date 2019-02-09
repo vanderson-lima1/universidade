@@ -17,7 +17,7 @@
         
         <div class="box-button-dab">
             <button class="waves-effect waves-light btn btn-create" type="submit">
-                Confirmar alteração
+                Salvar alteração
             </button>
             <a class="waves-effect waves-light btn btn-back" href="{{route('students.index')}}"> voltar a lista</a>
         </div>

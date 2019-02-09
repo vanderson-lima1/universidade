@@ -26,4 +26,5 @@ class SessionInformation
         //$institution->id = 1;
         return $institution;
     }
+
 }
