@@ -178,7 +178,7 @@ body {
     height: 33px !important;
     float: right;
     color: #fff;
-    background-color: #17a2b8;
+    background-color: #4484ce;
     border-color: #17a2b8;
 }
 .btn-back:hover {
@@ -193,7 +193,7 @@ body {
     height: 33px !important;
     float: right;
     color: #fff;
-    background-color: #dc3545;
+    background-color: #ff3b3f;
     border-color: #dc3545;
 }
 .btn-delete:hover {
@@ -236,6 +236,8 @@ body {
     border: 1px solid transparent;
     border-radius: 0.25rem;
     padding-left: 15px !important; /* Espaçar texto de todas as mensagens a esquerda. */
+    font-size: 13px;
+    z-index: 1;
 }
 .alert-main.default {
     color: #0c5460;
@@ -248,9 +250,15 @@ body {
     border-color: #f5c6cb;
 }
 .alert-main.warning {
+    color: #373737;
+    background-color: #f9ce00;
+    border-color: #ffce00;
+
+    /*
     color: #856404;
     background-color: #fff3cd;
     border-color: #ffeeba;
+    */
 }
 .alert-main.success {
     color: #155724;

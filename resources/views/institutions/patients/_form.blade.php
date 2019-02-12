@@ -2,7 +2,7 @@
       
       <div class="row input field col s12">
          <label for="name">Nome</label>
-         <input class="validate" id="name" name="name" value="{{old('name',$patient->name)}}">
+         <input type="text" class="validate" id="name" name="name" value="{{old('name',$patient->name)}}">
       </div>  
 
       @php
@@ -13,7 +13,7 @@
          <label for="sex">Sexo</label>
          <p>
             <label>
-               <input class="with-gap" type="radio" name="sex" value="m" {{old('sex',$sex) == 'm'?'checked': ''}}>
+               <input type="radio" class="with-gap" name="sex" value="m" {{old('sex',$sex) == 'm'?'checked': ''}}>
                <span> Masculino </span>
             </label>
          </p>
@@ -42,25 +42,25 @@
 
       <div class="form-group">
          <label for="phone">Celular </label>
-         <input class="form-control" id="phone" name="phone" 
+         <input type="text" class="form-control" id="phone" name="phone" 
                 value="{{old('phone',$patient->phone)}}">
       </div>
 
       <div class="form-group">
          <label for="documentRG">RG</label>
-         <input class="form-control" id="documentRG" name="documentRG"
-                value="{{old('documentRG',$patient->documentRGXXX)}}">
+         <input type="text" class="form-control" id="documentRG" name="documentRG"
+                value="{{old('documentRG',$patient->documentRG)}}">
       </div>
 
       <div class="form-group">
          <label for="documentCPF">CPF</label>
-         <input class="form-control" id="documentCPF" name="documentCPF"
+         <input type="text" class="form-control" id="documentCPF" name="documentCPF"
                 value="{{old('documentCPF',$patient->documentCPF)}}">
       </div>
 
       <div class="form-group">
          <label for="documentSUS">SUS</label>
-         <input class="form-control" id="documentSUS" name="documentSUS"
+         <input type="text" class="form-control" id="documentSUS" name="documentSUS"
                 value="{{old('documentSUS',$patient->documentSUS)}}">
       </div>
 
