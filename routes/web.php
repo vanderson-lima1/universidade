@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
     Route::resource('/', 'AdminController');
@@ -30,8 +28,16 @@ Route::group(['prefix' => 'institution','namespace' => 'Institution'], function 
     Route::resource('employees', 'EmployeesController');
 });
 
+Auth::routes();
 
+Route::get('/', function () {
+    Auth::logout();
+    return view('home');
+});
 
+Route::get('/home', function () {
+    return view('home');
+});
 
 /* Configuração estável = 02/02/2019 *** Backup
 

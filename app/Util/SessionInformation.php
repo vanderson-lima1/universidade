@@ -32,10 +32,4 @@ class SessionInformation {
         return $institution;
     }
 
-<<<<<<< HEAD
-=======
-    static function roleLoggedIn() {
-        return ROLE[1].value;
-    }
->>>>>>> 16nd - Inicio erro git
 }
