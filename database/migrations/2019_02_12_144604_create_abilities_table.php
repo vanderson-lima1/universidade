@@ -15,7 +15,9 @@ class CreateAbilitiesTable extends Migration
     {
         Schema::create('abilities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',20)->unique();
+            $table->string('resource',30)->nullable($value=false);
+            $table->string('action',30)->nullable($value=false);
+            $table->index(['resource','action']);
             $table->timestamps();
         });
     }
