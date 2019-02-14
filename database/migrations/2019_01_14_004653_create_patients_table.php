@@ -26,7 +26,10 @@ class CreatePatientsTable extends Migration
             $table->string('phone', 12)->nullable();
             $table->string('documentCPF', 15)->nullable();
             $table->string('documentRG', 10)->nullable();
-            $table->string('documentSUS', 16)->nullable();                       
+            $table->string('documentSUS', 16)->nullable();      
+            
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('user');            
             
             $table->timestamps();   
         });

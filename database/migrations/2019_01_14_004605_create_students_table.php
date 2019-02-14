@@ -24,6 +24,9 @@ class CreateStudentsTable extends Migration
             $table->integer('unity_id')->unsigned()->nullable($value=false);
             $table->foreign('unity_id')->references('id')->on('unities');
 
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('user');            
+
             $table->timestamps();
         });
     }
