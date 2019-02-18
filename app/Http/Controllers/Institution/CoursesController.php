@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Unity;
 use App\Models\Institution;
 use App\Util\SessionInformation;
+use Illuminate\Database\Eloquent\Collection;
 
 class CoursesController extends Controller
 {
@@ -21,7 +22,29 @@ class CoursesController extends Controller
         //retirar !!!
         $unity = SessionInformation::unityLoggedIn();
         $acao = $request->get('acao');
-        $courses = Course::whereUnityId($unity->id)->get();
+
+        
+        //$courses = Course::whereUnityId($unity->id)->get();
+        // Teste Vanderson, 3 linhas abaixo mesma coisa comentário acima 
+        $course = new Course();
+        $courses = new Collection();
+        $courses = $course->whereUnityId($unity->id)->get();  
+
+        //dd(\Route::getRoutes());      
+        $selectionRoutesNames = collect(\Route::getRoutes())->map(function ($route) {return $route->getName();});
+        $selectionRoutesUri   = collect(\Route::getRoutes())->map(function ($route) {return $route->uri();});
+        $selectionRoutesActionNames = collect(\Route::getRoutes())->map(function ($route) {return $route->getActionName();});
+        $selectionRoutesHost = collect(\Route::getRoutes())->map(function ($route) {return $route->domain();});
+        $selectionRoutes = collect(\Route::getRoutes())->map(function ($route) {
+            $names = $route->getName();
+            $actions = $route->getActionName();
+            if (strpos($actions, "App\Http\Controllers\Institution")!==false) {
+                return compact('names', 'actions');
+            }
+            
+        });
+
+        dd(\Route::getRoutes(),$selectionRoutesNames, $selectionRoutesUri, $selectionRoutesActionNames, $selectionRoutesHost,$selectionRoutes);
 
         // Depois adequar esta regra corretamente. 
         // Valida para habilitar ou desabilitar botão de cadastro, respeitando hierarquia do modelo de dados.

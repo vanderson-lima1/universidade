@@ -17,6 +17,12 @@ class EmployeesController extends Controller
      */
     public function index()
     {
+        
+        //if(\Gate::denies('employees.index')){
+        //    abort(403, 'Acesso negado !!!');
+        //}
+        $this->authorize('employees.index');
+        
         //retirar !!!
         $unity = SessionInformation::unityLoggedIn();
         

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
 
             $table->integer('role_id')->unsigned()->nullable($value=false);
             $table->foreign('role_id')->references('id')->on('roles');
+            //$table->string('authorModel',60);
 
             $table->timestamps();
         });

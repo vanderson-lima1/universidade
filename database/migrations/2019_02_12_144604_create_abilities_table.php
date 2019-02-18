@@ -17,6 +17,7 @@ class CreateAbilitiesTable extends Migration
             $table->increments('id');
             $table->string('resource',30)->nullable($value=false);
             $table->string('action',30)->nullable($value=false);
+            $table->string('resource_action',61)->nullable($value=false);
             $table->index(['resource','action']);
             $table->timestamps();
         });
