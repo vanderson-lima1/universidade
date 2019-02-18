@@ -10,12 +10,12 @@
 
     @include('util._erros')
 
-    <form method="POST" action="{{route('teachers.store')}}">
+    <form id="formTeachersCreate" method="POST" action="{{route('teachers.store')}}">
         
         @include('institutions.teachers._form')
 
         <div class="box-button-dab">
-            <button class="waves-effect waves-light btn btn-create" type="submit">
+            <button class="waves-effect waves-light btn btn-create" id="btnSubmit" type="submit">
                 Cadastrar
             </button>
             <a class="waves-effect waves-light btn btn-back" href="{{route('teachers.index')}}"> voltar a lista</a>

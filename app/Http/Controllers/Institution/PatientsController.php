@@ -127,9 +127,9 @@ class PatientsController extends Controller
             'sex'         => 'required|in:m,f',
             'period'      => "required|in:$period" ,
             'phone'       => 'required|numeric',
-            'documentCPF' => 'required|numeric|max:12' ,
-            'documentRG'  => 'required|numeric|max:09',
-            'documentSUS' => 'required|numeric|max:16',
+            'documentCPF' => 'required|numeric',
+            'documentRG'  => 'required|numeric',
+            'documentSUS' => 'required|numeric',
         ]);
 
     }

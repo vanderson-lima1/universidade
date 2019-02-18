@@ -1,0 +1,3 @@
+https://github.com/igorescobar/jQuery-Mask-Plugin
+https://github.com/caouecs/laravel-lang
+

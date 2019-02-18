@@ -10,13 +10,13 @@
 
     @include('util._erros')
 
-    <form method="POST" action="{{route('institutions.update', ['id' => $institution->id])}}">        
+    <form id="formInstitutionsAlter" method="POST" action="{{route('institutions.update', ['id' => $institution->id])}}">        
         {{method_field('PUT')}}
 
         @include('institutions.institutions._form')
 
         <div class="box-button-dab">
-            <button class="waves-effect waves-light btn btn-create" type="submit">
+            <button class="waves-effect waves-light btn btn-create" id="btnSubmit" type="submit">
                 Salvar alteração
             </button>
             <a class="waves-effect waves-light btn btn-back" href="{{route('institutions.index')}}"> voltar a lista</a>

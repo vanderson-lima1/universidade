@@ -11,8 +11,10 @@
 
     @include('util._erros')
 
-    <form id="formCourses" method="POST" action="{{route('courses.store')}}">
+    <form id="formCoursesCreate" method="POST" action="{{route('courses.store')}}">
         
+        <div id="box-validacao"></div>
+
         @include('institutions.courses._form')
 
         <div class="box-button-dab">
