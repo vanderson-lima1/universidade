@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\User;
+
+use Illuminate\Http\Request;
+use App\Util\RotasDoSistema;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -26,6 +31,18 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        //Seleciona todas rotas do sistema.
+        $rotas = RotasDoSistema::principal();
+
+        //dd($rotas);
+
+        foreach ($rotas as $route) { 
+            Gate::define($route, function (?User $user) {
+                return true;
+            }); 
+        }
+
     }
 
     /**

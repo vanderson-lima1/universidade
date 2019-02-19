@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use App\Models\Unity;
 use App\Util\SessionInformation;
+use App\Util\RotasDoSistema;
 
 class EmployeesController extends Controller
 {
@@ -18,11 +19,8 @@ class EmployeesController extends Controller
     public function index()
     {
         
-        //if(\Gate::denies('employees.index')){
-        //    abort(403, 'Acesso negado !!!');
-        //}
         $this->authorize('employees.index');
-        
+
         //retirar !!!
         $unity = SessionInformation::unityLoggedIn();
         
