@@ -10,6 +10,7 @@ use App\Util\SessionInformation;
 
 class EmployeesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +22,9 @@ class EmployeesController extends Controller
         //if(\Gate::denies('employees.index')){
         //    abort(403, 'Acesso negado !!!');
         //}
-        $this->authorize('employees.index');
+
+
+        $this->authorize('teste','employees.index');
         
         //retirar !!!
         $unity = SessionInformation::unityLoggedIn();

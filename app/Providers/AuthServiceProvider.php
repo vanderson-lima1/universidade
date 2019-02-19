@@ -27,12 +27,15 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->registerPolicies();
 
+        
         //Seleciona todas rotas do sistema
-        $selectionRoutes = collect(\Route::getRoutes())->map(function ($route) {return $route;});
+        //$selectionRoutes = collect(\Route::getRoutes())->map(function ($route) {return $route;});
+        //dd($selectionRoutes);
 
+        /*
         foreach ($selectionRoutes as $route) {                         
             if (strpos($route->getActionName(), "App\Http\Controllers\Institution")!==false) {                
-                Gate::define($route->getName(),$route->getActionName(), function (User $user, $model) use($route) {
+                Gate::define($route->getName(), function (?User $user) {
                    /*
                    // 1 - posso fazer direito sem usar o foreach só procurando pelo index direto
                    // 2 - passar o codigo abaixo para user e criar uma função que mandando uma 
@@ -44,11 +47,17 @@ class AuthServiceProvider extends ServiceProvider
                            break 1;
                         }
                     }
-                    return $encontrouRegra;
-                    */   
+                    return $encontrouRegra;                          
                     return true;
                 }); 
             }
-        }        
+        } */
+
+        Gate::define('teste', function (?User $user, $parm) {
+            //dd($parm);
+            return $parm != 'employees.index';            
+        });
+
     }
+    
 }
