@@ -44,7 +44,13 @@ class CoursesController extends Controller
             
         });
 
-        dd(\Route::getRoutes(),$selectionRoutesNames, $selectionRoutesUri, $selectionRoutesActionNames, $selectionRoutesHost,$selectionRoutes);
+        //dd(\Route::getRoutes(),$selectionRoutesNames, $selectionRoutesUri, $selectionRoutesActionNames, $selectionRoutesHost,$selectionRoutes);
+        //dd(\Route::getRoutes())->map();
+        //dd($selectionRoutesNames);
+        //dd($selectionRoutesUri);
+        //dd($selectionRoutesActionNames);
+        //dd($selectionRoutesHost);
+        dd($selectionRoutes);
 
         // Depois adequar esta regra corretamente. 
         // Valida para habilitar ou desabilitar botão de cadastro, respeitando hierarquia do modelo de dados.

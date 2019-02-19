@@ -239,11 +239,15 @@ function validaFormPatientsCreate(evento) {
             retorno = validaCampoVazio(patients.documentCPF.value);
 
             if(retorno === true) {
-                retorno = validaTamanhoMaxString(patients.documentCPF.value,15);
+                retorno = validaTamanhoMaxString(patients.documentCPF.value,11);
             }
 
             if(retorno === true) {
                 retorno = validaConteudoNumerico(patients.documentCPF.value);
+            }
+
+            if(retorno === true) {
+                retorno = validaNumeroCpf(patients.documentCPF.value);
             }
 
             if(retorno === true) {
@@ -335,68 +339,7 @@ function validaFocus(objCampos) {
     }
 
 }
- 
-    /*
-    switch (elementos[0].id) {
-        case name:
-        if(elementos['name'].value === '') {
-            //return elementos['name'].focus();
-            return false;
-        } else if (elementos['name'].value != '' && campo === elementos['name'].id) {
-            //return elementos['name'].focus();
-            alert("AQUI")
-            return false;
-        } 
-        break;
-
-        case phone:
-        if(elementos['phone'].value === '') {
-            //return elementos['phone'].focus();
-            return false;
-        } else if (elementos['phone'].value != '' && campo === elementos['phone'].id) {
-            //return elementos['phone'].focus();
-            return false;
-        }
-        break;
-
-        case documentRG:
-        if(elementos['documentRG'].value === '') {
-            //return elementos['documentRG'].focus();
-            return false;
-        } else if (elementos['documentRG'].value != '' && campo === elementos['documentRG'].id) {
-            //return elementos['documentRG'].focus();
-            return false;
-        }
-        break;
-
-        case documentCPF:
-        if(elementos['documentCPF'].value === '') {
-            //return elementos['documentCPF'].focus();
-            return false;
-        } else if (elementos['documentCPF'].value != '' && campo === elementos['documentCPF'].id) {
-            //return elementos['documentCPF'].focus();
-            return false;
-        }
-        break;
-
-        case documentSUS:
-        if(elementos['documentSUS'].value === '') {
-            //return elementos['documentSUS'].focus();
-            return false;
-        } else if (elementos['documentSUS'].value != '' && campo === elementos['documentSUS'].id) {
-            //return elementos['documentSUS'].focus();
-            return false;
-        }
-        break;
-
-        default:
-            break;
-    }
-*/
-/* ======================================================================= */
-
-
-
+ /* ======================================================================= */
 
 /* ======================================================================= */
 /* === Validação para retirar espaços desnecessários (>= 2 espaços) ====== */
@@ -497,6 +440,119 @@ function validaConteudoNumerico(valorNumero) {
         return true;
     }
 
+}
+/* ======================================================================= */
+
+/* ======================================================================= */
+/* === Validação de DDD para todo o Brasil =============================== */
+/* ======================================================================= */
+function validaDdd(valorNumero) {
+    
+    let dddValido = 
+        [
+            '11','12','13','14','15','16','17','18','19','21',
+            '22','24','27','28','31','32','33','34','35','37',
+            '38','41','42','43','44','45','46','47','48','49',
+            '51','53','54','55','61','62','63','64','65','66',
+            '67','68','69','71','73','74','75','77','79','81',
+            '82','83','84','85','86','87','88','89','91','92',
+            '93','94','95','96','97','98','99'
+        ];
+
+    let estadosComregraDeNonoDigito =
+        [
+            'sp','rj'
+        ]    
+
+    let cidadesComregraDeNonoDigito =
+        [
+            'sao paulo','rio de janeiro'
+        ]    
+
+    
+    let resultado;
+    let mensagemErro;
+
+    return true;
+    
+}
+/* ======================================================================= */
+
+/* ======================================================================= */
+/* === Validação de CPF ================================================== */
+/* ======================================================================= */
+function validaNumeroCpf(numeroCpf) {	
+    let mensagemErro;
+
+    // Transforma qualquer caracter que não seja número em espaço.
+	numeroCpf = numeroCpf.replace(/[^\d]+/g,'');	
+    
+    // Verifica se CPF está totalmente em branco.
+    if(numeroCpf == '') {
+        mensagemErro = "CPF inválido - Validação = 1.";
+        console.log(mensagemErro)
+        return false;	
+    }
+    
+	// Após conversão de caracteres inválidos em espaço, verifica se o conteúdo está com 11 bytes.	
+    if(numeroCpf.length != 11) {
+        mensagemErro = "CPF inválido - Validação = 2.";
+        console.log(mensagemErro)
+        return false;		
+    } 
+
+   	// Verifica CPF's inválidos conhecidos.	
+    if( numeroCpf == "00000000000" || numeroCpf == "11111111111" || 
+        numeroCpf == "22222222222" || numeroCpf == "33333333333" || 
+        numeroCpf == "44444444444" || numeroCpf == "55555555555" || 
+        numeroCpf == "66666666666" || numeroCpf == "77777777777" || 
+        numeroCpf == "88888888888" || numeroCpf == "99999999999") {
+            mensagemErro = "CPF inválido - Validação = 3.";
+            console.log(mensagemErro)
+		    return false;		
+    }
+
+	// === Valida primeiro dígito.	
+	var add = 0;	
+	for (i=0; i < 9; i ++)	{
+        add += parseInt(numeroCpf.charAt(i)) * (10 - i);	
+        rev = 11 - (add % 11);	
+    }
+    
+    var primeiroDigito = rev;
+
+	if (primeiroDigito == 10 || primeiroDigito == 11) {		
+        console.log("PRIMEIRO DÍGITO - ",primeiroDigito);
+        primeiroDigito = 0;	
+    }
+
+    if (primeiroDigito != parseInt(numeroCpf.charAt(9))) {
+        mensagemErro = "CPF inválido - Validação = 4.";
+        console.log(mensagemErro)
+        return false;	
+    }
+            	
+	// === Valida segundo dígito.	
+	add = 0;	
+	for (i = 0; i < 10; i ++) {	
+        add += parseInt(numeroCpf.charAt(i)) * (11 - i);
+        rev = 11 - (add % 11);	
+    }
+
+    var segundoDigito = rev;
+
+	if (segundoDigito == 10 || segundoDigito == 11)	{
+        console.log("SEGUNDO DÍGITO - ",segundoDigito);
+        segundoDigito = 0;	
+    }
+	if (segundoDigito != parseInt(numeroCpf.charAt(10))) {
+        mensagemErro = "CPF inválido - Validação = 5.";
+        console.log(mensagemErro)
+        return false;		
+    }
+
+    // CPF validado com sucesso.
+	return true;   
 }
 /* ======================================================================= */
 

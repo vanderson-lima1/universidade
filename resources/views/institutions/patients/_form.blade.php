@@ -55,7 +55,7 @@
       <div class="form-group">
          <label for="documentCPF">CPF</label>
          <input type="text" class="form-control" id="documentCPF" name="documentCPF"
-                value="{{old('documentCPF',$patient->documentCPF)}}">
+                value="{{old('documentCPF',$patient->documentCPF)}}" maxlength="11">
       </div>
 
       <div class="form-group">

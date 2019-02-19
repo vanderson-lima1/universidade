@@ -18,6 +18,7 @@ class PatientsController extends Controller
      */
     public function index()
     {
+        $this->authorize('patients.index');
         //retirar!!!
         $unity = SessionInformation::unityLoggedIn();   
         
