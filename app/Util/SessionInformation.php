@@ -17,6 +17,7 @@ class SessionInformation {
     static function unityLoggedIn() {
         $unity = Unity::first();
         if(!$unity){
+            $unity = new Unity();
             $unity->name = "NAO ENCONTRADO";
         }
         //$unity->id = 1;
@@ -26,6 +27,7 @@ class SessionInformation {
     static function institutionLoggedIn() {
         $institution = Institution::first();
         if(!$institution){
+            $institution = new Institution();
             $institution->name = "NAO ENCONTRADO";
         }
         //$institution->id = 1;

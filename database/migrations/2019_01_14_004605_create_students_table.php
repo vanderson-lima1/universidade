@@ -25,7 +25,7 @@ class CreateStudentsTable extends Migration
             $table->foreign('unity_id')->references('id')->on('unities');
 
             $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('user');            
+            $table->foreign('user_id')->references('id')->on('users');            
 
             $table->timestamps();
         });

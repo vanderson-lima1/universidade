@@ -35,7 +35,7 @@ class RouteServiceProvider extends ServiceProvider
         //Seleciona todas rotas do sistema.
         $rotas = RotasDoSistema::principal();
 
-        dd($rotas);
+        //dd($rotas);
 
         foreach ($rotas as $route) { 
             Gate::define($route, function (?User $user) {

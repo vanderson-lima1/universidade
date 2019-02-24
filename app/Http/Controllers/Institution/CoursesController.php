@@ -8,6 +8,9 @@ use App\Models\Course;
 use App\Models\Unity;
 use App\Models\Institution;
 use App\Util\SessionInformation;
+use App\Util\RotasDoSistema;
+use App\User;
+use App\Models\Admin;
 use Illuminate\Database\Eloquent\Collection;
 
 class CoursesController extends Controller
@@ -30,31 +33,18 @@ class CoursesController extends Controller
         $courses = new Collection();
         $courses = $course->whereUnityId($unity->id)->get();  
 
-        //dd(\Route::getRoutes());      
-        $selectionRoutesNames = collect(\Route::getRoutes())->map(function ($route) {return $route->getName();});
-        $selectionRoutesUri   = collect(\Route::getRoutes())->map(function ($route) {return $route->uri();});
-        $selectionRoutesActionNames = collect(\Route::getRoutes())->map(function ($route) {return $route->getActionName();});
-        $selectionRoutesHost = collect(\Route::getRoutes())->map(function ($route) {return $route->domain();});
-        $selectionRoutes = collect(\Route::getRoutes())->map(function ($route) {
-            $names = $route->getName();
-            $actions = $route->getActionName();
-            if (strpos($actions, "App\Http\Controllers\Institution")!==false) {
-                return compact('names', 'actions');
-            }
-            
-        });
+        //teste somente para criar todas habilidades de 1 vez, OK
+        //RotasDoSistema::criaTodasHabilidades();
 
-        //dd(\Route::getRoutes(),$selectionRoutesNames, $selectionRoutesUri, $selectionRoutesActionNames, $selectionRoutesHost,$selectionRoutes);
-        //dd(\Route::getRoutes())->map();
-        //dd($selectionRoutesNames);
-        //dd($selectionRoutesUri);
-        //dd($selectionRoutesActionNames);
-        //dd($selectionRoutesHost);
-        dd($selectionRoutes);
+        //testes da função actorLoggedIn(), OK
+        //$users = User::whereId(1)->get();
+        //$user = $users->pop();
+        //$actor = $user->actorLoggedIn();                        
+        //dd($actor, new Admin(), $actor->unity);        
 
         // Depois adequar esta regra corretamente. 
         // Valida para habilitar ou desabilitar botão de cadastro, respeitando hierarquia do modelo de dados.
-        $habilitarBotao = $this->consultarInstituicao();        
+        $habilitarBotao = $this->consultarInstituicao();             
 
         return view('institutions.courses.index', compact('courses','unity','habilitarBotao','acao'));
     }
@@ -99,7 +89,7 @@ class CoursesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Course $course, Request $request)
-    {   
+    {           
         $acao = $request->get('acao');
         if (empty($acao) || $acao === "delete") {
             return view('institutions.courses.show', compact('course','acao'));

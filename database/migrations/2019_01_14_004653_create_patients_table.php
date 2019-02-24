@@ -29,7 +29,7 @@ class CreatePatientsTable extends Migration
             $table->string('documentSUS', 16)->nullable();      
             
             $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('user');            
+            $table->foreign('user_id')->references('id')->on('users');            
             
             $table->timestamps();   
         });

@@ -4,17 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Role;
+use App\Util\SessionInformation;
 
 class RolesController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        // Retirar !!
+        $unity = SessionInformation::unityLoggedIn();
+
+        $role = new Role();
+        $roles = $role->rolesUnity($unity);
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -24,7 +31,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.roles.create', ['role' => new Role()]);
     }
 
     /**
@@ -35,7 +42,11 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->_validate($request);
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+        Role::Create($data);
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -44,9 +55,14 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show(Role $role, Request $request)
+    {   
+        $acao = $request->get('acao');
+        if (empty($acao) || $acao === "delete") {
+            return view('admin.roles.show', compact('role','acao'));
+        }else{
+            return redirect()->route('roles.index');
+        }
     }
 
     /**
@@ -55,9 +71,9 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        return view('admin.roles.edit', compact('role'));
     }
 
     /**
@@ -67,9 +83,17 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $this->_validate($request);
+
+        $data = $request->all();
+        $data['default'] = $request->has('defaulter');
+
+        $role->fill($data);
+        $role->save();
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -78,8 +102,15 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->route('roles.index');
+    }
+
+    protected function _validate(Request $request){
+        $this->validate($request, [
+            'name' => 'required|max:100',
+        ]);
     }
 }

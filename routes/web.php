@@ -28,6 +28,10 @@ Route::group(['prefix' => 'institution','namespace' => 'Institution'], function 
     Route::resource('employees', 'EmployeesController');
 });
 
+Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
+    Route::resource('roles', 'RolesController');
+});
+
 Auth::routes();
 
 Route::get('/', function () {
