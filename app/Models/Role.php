@@ -14,10 +14,10 @@ class Role extends Model
         'name', 
     ];
 
-     /**
-     * Retorna collection de roles de uma especifica Unidade.(falta testar com varias unidades e atores)
-     */
-    public function rolesUnity(Unity $unity){
+    /**
+    * Retorna collection de perfis de uma especifica Unidade.(falta testar com varias unidades e atores)
+    */
+    public function onlyUnity(Unity $unity){
        $roles = $this->all();
        $rolesUnity = new Collection();
        foreach ($roles as $role) {
@@ -30,6 +30,21 @@ class Role extends Model
            }           
        }
        return $rolesUnity;
+    }
+
+    /**
+     * Verifica se perfil tem permissão para aquele acesso.
+     */        
+    public function hasPermission($nameAbility){
+        $encontrouRegra = false;
+        $abilities =  $this->abilities;
+        foreach ($abilities as $ability) {
+            if($ability->resource_action == $nameAbility){
+                $encontrouRegra = true;
+                break;
+             }
+         }
+         return $encontrouRegra;       
     }
 
     public function abilities() {

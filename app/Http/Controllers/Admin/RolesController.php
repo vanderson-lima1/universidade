@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Collection;
 use App\Models\Role;
+use App\Models\Ability;
 use App\Util\SessionInformation;
 
 class RolesController extends Controller
 {
+
      /**
      * Display a listing of the resource.
      *
@@ -19,8 +22,10 @@ class RolesController extends Controller
         // Retirar !!
         $unity = SessionInformation::unityLoggedIn();
 
-        $role = new Role();
-        $roles = $role->rolesUnity($unity);
+        //$role = new Role();
+        //$roles = $role->onlyUnity($unity);
+
+        $roles = Role::all();
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -30,8 +35,9 @@ class RolesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.roles.create', ['role' => new Role()]);
+    {        
+        $abilities = Ability::all();
+        return view('admin.roles.create', ['role' => new Role(), 'abilities' => $abilities]);
     }
 
     /**
@@ -45,7 +51,11 @@ class RolesController extends Controller
         $this->_validate($request);
         $data = $request->all();
         $data['default'] = $request->has('defaulter');
-        Role::Create($data);
+                
+        $role = Role::Create($data);
+
+        $this->addAbilities($role, $data);        
+        
         return redirect()->route('roles.index');
     }
 
@@ -58,8 +68,9 @@ class RolesController extends Controller
     public function show(Role $role, Request $request)
     {   
         $acao = $request->get('acao');
+        $abilities = Ability::all();
         if (empty($acao) || $acao === "delete") {
-            return view('admin.roles.show', compact('role','acao'));
+            return view('admin.roles.show', compact('role','acao', 'abilities'));
         }else{
             return redirect()->route('roles.index');
         }
@@ -73,7 +84,8 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('admin.roles.edit', compact('role'));
+        $abilities = Ability::all();
+        return view('admin.roles.edit', compact('role', 'abilities'));
     }
 
     /**
@@ -112,5 +124,20 @@ class RolesController extends Controller
         $this->validate($request, [
             'name' => 'required|max:100',
         ]);
+    }
+
+    /**
+     * Adiciona as permissoes ao Perfil criado, de acordo com dados recebidos.
+     */    
+    protected function addAbilities(Role $role, $data) {
+        $abilities = Ability::all();
+        foreach($abilities as $ability){
+            $resource_action = trim($ability->resource_action);
+            $resource_action = str_replace(".","_",$resource_action);
+            $flagSimNao = $data["$resource_action"];
+            if($flagSimNao == 's') {
+                $role->abilities()->attach($ability->id);
+            }            
+        }        
     }
 }

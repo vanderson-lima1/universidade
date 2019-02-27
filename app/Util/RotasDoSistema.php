@@ -24,6 +24,7 @@ class RotasDoSistema {
 
     /*
     * Usar somente 1 vez pra criacão das abilidades, quando estiverem vazias na tabela
+    * essa função pode ser colocada em uma seed, para carregar a tabela na 1vez q sobe o sistema
     */
     static function criaTodasHabilidades() {
         $ability = new Ability();
@@ -45,7 +46,8 @@ class RotasDoSistema {
     }
 
     /*
-    * Adiciona todas actions de uma rota a um perfil
+    * RETIRAR !!!!
+    * Adiciona todas actions de uma rota a um perfil, funcão criada p/ ajudar nos testes
     */
     static function adicionaRotasAoPerfil($resource, Role $role) {
         $resourceAbilities = Ability::whereResource($resource)->get();

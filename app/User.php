@@ -47,7 +47,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Verifica se usuario tem permissão para aquele acesso. falta Testar
+     * Verifica se usuario tem permissão para aquele acesso.
      */    
     public function hasPermission($nameAbility) {        
         $encontrouRegra = false;
