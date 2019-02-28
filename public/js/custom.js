@@ -10,9 +10,9 @@ $("#menu-toggle").click(function(e) {
 /* ======================================================================= */
 /* === Header Secundário / Topo Fixo ===================================== */
 /* ======================================================================= */
-$(document).ready(function() {
+/*$(document).ready(function() {
     $(window).scroll(function() {
-        if($(window).scrollTop()>100) {
+        if($(window).scrollTop()>0) {
             $('nav').addClass('sticky-nav');
             $('.menu-custom').addClass('menu-custom-scroll');
         }else{
@@ -20,7 +20,7 @@ $(document).ready(function() {
             $('.menu-custom').removeClass('menu-custom-scroll');
         }
     });
-}) ;
+}) ;*/
 
 /* ======================================================================= */
 /* ======================================================================= */
@@ -121,7 +121,7 @@ function validaFormGenericCreate(evento) {
 
                 retornaCss(name);
                 name.blur();
-                evento.preventDefault();
+                //evento.preventDefault();
             } else {
                 formataCss(name);
                 //validaFocus(name) 
