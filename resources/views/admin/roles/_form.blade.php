@@ -17,24 +17,24 @@
            <tbody>
 
          @if (count($abilities))
-            @foreach ($abilities as $ability)
-            <tr>
+            @foreach ($abilities as $ability)                         
+             <tr>               
                <td>{{$ability->resource}}</td>
                <td>{{$ability->action}}</td>
                <td>{{$ability->resource_action}}</td>  
                <td>
                      <p>
                         <label>
-                           <input type="radio" class="with-gap" name="{{$ability->resource_action}}" value="s" {{ $role->hasPermission($ability->resource_action) == true ? 'checked': ''}}>
+                           <input type="radio" class="with-gap" name="{{$ability->resource_action}}" value="{{old("$ability->resource_action", 's')}}" {{ $role->hasPermission($ability->resource_action) == true ? 'checked': ''}}>
                            <span>Sim</span>
                         </label>
                         <label>
-                           <input  type="radio" class="with-gap" name="{{$ability->resource_action}}" value="n" {{ $role->hasPermission($ability->resource_action) == false ? 'checked': ''}}>
+                           <input type="radio" class="with-gap" name="{{$ability->resource_action}}" value="{{old("$ability->resource_action", 'n')}}" {{ $role->hasPermission($ability->resource_action) == false ? 'checked': ''}}>
                            <span>Não</span>
                          </label>
                      </p>
                </td>  
-            </tr>                
+             </tr>                
             @endforeach
          @else 
             <br>

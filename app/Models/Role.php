@@ -32,6 +32,7 @@ class Role extends Model
        return $rolesUnity;
     }
 
+
     /**
      * Verifica se perfil tem permissão para aquele acesso.
      */        

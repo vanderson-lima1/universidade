@@ -105,6 +105,8 @@ class RolesController extends Controller
         $role->fill($data);
         $role->save();
 
+        $this->addAbilities($role, $data);
+
         return redirect()->route('roles.index');
     }
 
@@ -127,17 +129,22 @@ class RolesController extends Controller
     }
 
     /**
-     * Adiciona as permissoes ao Perfil criado, de acordo com dados recebidos.
+     * Adiciona ou Remove as permissoes(Ability) ao Perfil criado, de acordo com dados recebidos.
      */    
     protected function addAbilities(Role $role, $data) {
         $abilities = Ability::all();
+        $idsAbilities = array();
         foreach($abilities as $ability){
             $resource_action = trim($ability->resource_action);
             $resource_action = str_replace(".","_",$resource_action);
             $flagSimNao = $data["$resource_action"];
-            if($flagSimNao == 's') {
-                $role->abilities()->attach($ability->id);
+            if($flagSimNao == 's' || $flagSimNao == 'S') {
+                array_push($idsAbilities, $ability->id);
             }            
         }        
+
+        if(count($idsAbilities) > 0) {
+            $role->abilities()->sync($idsAbilities);                    
+        }
     }
 }
