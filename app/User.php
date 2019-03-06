@@ -67,8 +67,8 @@ class User extends Authenticatable
     public function actorLoggedIn() {
         $actorModel = 'App\\Models\\' . $this->actorModel;        
         $actor = new  $actorModel();
-        $actors = $actor->whereId($this->id)->get();                
-        return $actors->pop();
+        $actors = $actor->find($this->id);                
+        return $actors;
         /*
         switch($actorModel) {
             case "Admin":

@@ -118,7 +118,10 @@ class RolesController extends Controller
      */
     public function destroy(Role $role)
     {
-        $role->delete();
+        //faltou verifica se o Perfil ainda tem Users, se sim retornar erro.
+
+        $this->removeAbilities($role);
+        $role->delete();        
         return redirect()->route('roles.index');
     }
 
@@ -129,8 +132,8 @@ class RolesController extends Controller
     }
 
     /**
-     * Adiciona ou Remove as permissoes(Ability) ao Perfil criado, de acordo com dados recebidos.
-     */    
+    * Adiciona ou Remove as permissoes(Ability) ao Perfil criado, de acordo com dados recebidos.
+    */    
     protected function addAbilities(Role $role, $data) {
         $abilities = Ability::all();
         $idsAbilities = array();
@@ -146,5 +149,25 @@ class RolesController extends Controller
         if(count($idsAbilities) > 0) {
             $role->abilities()->sync($idsAbilities);                    
         }
+        else {
+            $this->removeAbilities($role);
+        }
     }
+
+    /**
+    * Remove todas as permissoes(Ability) ao Perfil.
+    */    
+    protected function removeAbilities(Role $role) {
+        $abilities = $role->abilities;                
+        $idsAbilities = array();
+        foreach($abilities as $ability){
+            array_push($idsAbilities, $ability->id);
+        }
+
+        if(count($idsAbilities) > 0) {
+            $numDetach = $role->abilities()->detach($idsAbilities);
+        }
+    }
+
+
 }

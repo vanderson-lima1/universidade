@@ -38,7 +38,10 @@ class RouteServiceProvider extends ServiceProvider
         //dd($rotas);
 
         foreach ($rotas as $route) { 
-            Gate::define($route, function (?User $user) {
+            Gate::define($route, function (?User $user) use ($route){
+                if($user != null){
+                    return $user->hasPermission($route);
+                }
                 return true;
             }); 
         }
