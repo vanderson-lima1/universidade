@@ -54,7 +54,7 @@ class RolesController extends Controller
                 
         $role = Role::Create($data);
 
-        $this->addAbilities($role, $data);        
+        $role->addAbilities($data);        
         
         return redirect()->route('roles.index');
     }
@@ -105,7 +105,7 @@ class RolesController extends Controller
         $role->fill($data);
         $role->save();
 
-        $this->addAbilities($role, $data);
+        $role->addAbilities($data);
 
         return redirect()->route('roles.index');
     }
@@ -120,7 +120,7 @@ class RolesController extends Controller
     {
         //faltou verifica se o Perfil ainda tem Users, se sim retornar erro.
 
-        $this->removeAbilities($role);
+        $role->removeAbilities();
         $role->delete();        
         return redirect()->route('roles.index');
     }
@@ -130,44 +130,4 @@ class RolesController extends Controller
             'name' => 'required|max:100',
         ]);
     }
-
-    /**
-    * Adiciona ou Remove as permissoes(Ability) ao Perfil criado, de acordo com dados recebidos.
-    */    
-    protected function addAbilities(Role $role, $data) {
-        $abilities = Ability::all();
-        $idsAbilities = array();
-        foreach($abilities as $ability){
-            $resource_action = trim($ability->resource_action);
-            $resource_action = str_replace(".","_",$resource_action);
-            $flagSimNao = $data["$resource_action"];
-            if($flagSimNao == 's' || $flagSimNao == 'S') {
-                array_push($idsAbilities, $ability->id);
-            }            
-        }        
-
-        if(count($idsAbilities) > 0) {
-            $role->abilities()->sync($idsAbilities);                    
-        }
-        else {
-            $this->removeAbilities($role);
-        }
-    }
-
-    /**
-    * Remove todas as permissoes(Ability) ao Perfil.
-    */    
-    protected function removeAbilities(Role $role) {
-        $abilities = $role->abilities;                
-        $idsAbilities = array();
-        foreach($abilities as $ability){
-            array_push($idsAbilities, $ability->id);
-        }
-
-        if(count($idsAbilities) > 0) {
-            $numDetach = $role->abilities()->detach($idsAbilities);
-        }
-    }
-
-
 }
